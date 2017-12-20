@@ -1,5 +1,20 @@
 /// @description Insert description here
-// You can write your code in this editor
-vydt=0;						// speed that the player fall with, initially 0
-vymaxdt=12;					// maximum fall speed
-dvy=1.2;					// change of velocity due to gravity
+
+// Material specific parameters
+normal_walkInvFriction = 0.8;
+normal_walkStopFriction = 1.2;
+normal_maxWalkVel = 16;
+normal_jumpAcc = 24;
+// Parameters
+jumpVel = 0;
+jumpAcc = normal_jumpAcc;
+fallVel = 0;
+maxFallVel=16;
+fallAcc = 2;
+walkSpeed = 0;
+walkInvFriction = normal_walkInvFriction;
+walkStopFriction = normal_walkStopFriction;
+maxWalkVel = normal_maxWalkVel;
+
+xVel = 0;
+yVel = 0;
