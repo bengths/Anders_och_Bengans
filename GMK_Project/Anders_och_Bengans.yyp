@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "1afdd236-39d3-4bd1-882e-ab0ca53e4c9d",
+            "Value": {
+                "id": "3bf051ba-7428-4310-8351-31e43d6ebc48",
+                "resourcePath": "objects\\obj_nisse\\obj_nisse.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "1b4b6379-4e05-42b2-b170-c2ee6b855190",
             "Value": {
                 "id": "70286953-82bc-4c9a-85b8-0ff19536e051",
@@ -147,6 +155,14 @@
             "Value": {
                 "id": "7334d3df-1471-419c-9348-6254aef2c76e",
                 "resourcePath": "views\\6f865784-f653-4e19-ba47-6188391086da.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "717f7468-33fb-412e-9423-da980abd6ce5",
+            "Value": {
+                "id": "fcdc2609-82ac-4b73-866f-577e4de546f4",
+                "resourcePath": "views\\717f7468-33fb-412e-9423-da980abd6ce5.yy",
                 "resourceType": "GMFolder"
             }
         },
