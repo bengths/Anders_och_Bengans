@@ -12,7 +12,8 @@
         "aa9c33c2-fcfa-4b99-8bac-10fcb40df9c4",
         "bb71d6d2-641a-4d4d-b430-9db4b60e1bcf",
         "3bbc9c9c-f472-47fa-b113-994348589dc4",
-        "b5830b82-6f6b-40bd-ae24-48cb6960d05c"
+        "b5830b82-6f6b-40bd-ae24-48cb6960d05c",
+        "50f69f56-ad4e-4aa2-95e0-62f89379e397"
     ],
     "filterType": "GMSprite",
     "folderName": "Anton",

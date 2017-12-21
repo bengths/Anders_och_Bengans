@@ -90,7 +90,7 @@
             "Key": "3bbc9c9c-f472-47fa-b113-994348589dc4",
             "Value": {
                 "id": "97605685-3f15-4085-afa0-e0552d3a80ce",
-                "resourcePath": "sprites\\spr_Nisse_Angry\\spr_Nisse_Angry.yy",
+                "resourcePath": "sprites\\spr_Nisse_Fire\\spr_Nisse_Fire.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -124,6 +124,14 @@
                 "id": "00e6b8fc-d5d9-4519-b982-fc71da4c9bce",
                 "resourcePath": "views\\50128635-b299-4c16-86fa-7f7a8997fadf.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "50f69f56-ad4e-4aa2-95e0-62f89379e397",
+            "Value": {
+                "id": "a4017cec-c5b8-45dc-a1a4-da3a914377a2",
+                "resourcePath": "sprites\\spr_Nisse_Angry\\spr_Nisse_Angry.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
