@@ -10,12 +10,10 @@ hDirection = key_right + key_left;
 // Check if player is standing on a block
 if(place_meeting(x,y+1,obj_block)) {
 	// Jumping
-	yVel =	- key_up * jumpAcc;
+		yVel =	- key_up * jumpAcc;
 	// Walking
 	if(abs(walkSpeed)<maxWalkVel) xVel += hDirection * walkInvFriction;
 	
-	//if(abs(walkSpeed)>maxWalkVel && hDirection != 0) walkSpeed = maxWalkVel*hDirection;
-	//xVel += walkSpeed;
 	// Horizontal speed loss
 	if(hDirection == 0 && xVel != 0) {
 		xVel -= walkInvFriction*walkStopFriction*sign(xVel);
@@ -48,10 +46,26 @@ y += yVel;
 x += xVel;
 
 // ---- Graphics ----
-// Idlg
-if(xVel == 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) sprite_index = spr_Anton;
+// Idle
+if(xVel == 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) { 
+	sprite_index = spr_Anton; 
+	image_speed = normal_animation_speed;
+	}
+// Walking
 if(xVel != 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) sprite_index = spr_Anton_Walk;
+// Falling
+if(yVel > 0) {
+	sprite_index = spr_Anton_Fall;
+	image_index = 1;
+	image_speed = 0;
+}
 
+if(yVel <= 0 && !place_meeting(x,y+1,obj_block)) {
+	sprite_index = spr_Anton_Fall;
+	image_index = 0;
+	image_speed = 0;
+}
 
+// Direction
 if(hDirection != 0) lastDirection = hDirection;
 image_xscale = lastDirection;	
