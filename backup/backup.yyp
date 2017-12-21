@@ -255,6 +255,14 @@
             }
         },
         {
+            "Key": "a6544955-6c20-433f-8023-63adf0e5f977",
+            "Value": {
+                "id": "12f43f19-08b1-4a74-b9e2-f7f0fd3fa3a0",
+                "resourcePath": "sprites\\spr_Nisse_Fall\\spr_Nisse_Fall.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a7807898-5cda-4a8c-a2a3-89690fcdf17a",
             "Value": {
                 "id": "f1ae780e-089f-4549-b60c-c6d22385dd16",

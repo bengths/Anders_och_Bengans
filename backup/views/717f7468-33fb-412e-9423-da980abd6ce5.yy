@@ -8,7 +8,8 @@
         "aa9c33c2-fcfa-4b99-8bac-10fcb40df9c4",
         "b5830b82-6f6b-40bd-ae24-48cb6960d05c",
         "3bbc9c9c-f472-47fa-b113-994348589dc4",
-        "50f69f56-ad4e-4aa2-95e0-62f89379e397"
+        "50f69f56-ad4e-4aa2-95e0-62f89379e397",
+        "a6544955-6c20-433f-8023-63adf0e5f977"
     ],
     "filterType": "GMSprite",
     "folderName": "Nisse",
