@@ -79,6 +79,14 @@
             }
         },
         {
+            "Key": "3bbc9c9c-f472-47fa-b113-994348589dc4",
+            "Value": {
+                "id": "97605685-3f15-4085-afa0-e0552d3a80ce",
+                "resourcePath": "sprites\\spr_Nisse_Angry\\spr_Nisse_Angry.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "42adcce2-c837-433b-972b-d628fe6f09cd",
             "Value": {
                 "id": "a25ac4fa-abde-4e90-98c0-0629128e615e",
@@ -207,10 +215,26 @@
             }
         },
         {
+            "Key": "aa9c33c2-fcfa-4b99-8bac-10fcb40df9c4",
+            "Value": {
+                "id": "533c23d1-38a5-48c5-8184-df9ab5683460",
+                "resourcePath": "sprites\\spr_Nisse_Idle\\spr_Nisse_Idle.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b4ac22fc-e7ef-4188-8f21-ab8a8c9cf8af",
             "Value": {
                 "id": "3b3d2be1-e186-42ff-ac6c-d84ee8981b74",
                 "resourcePath": "sprites\\spr_player\\spr_player.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "b5830b82-6f6b-40bd-ae24-48cb6960d05c",
+            "Value": {
+                "id": "917d9c80-f219-4e00-9f90-205e5cbc3b05",
+                "resourcePath": "sprites\\spr_Nisse_Death\\spr_Nisse_Death.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -228,6 +252,14 @@
                 "id": "4447a8ff-97c1-4cb7-b578-337893531a58",
                 "resourcePath": "views\\b938dff4-0693-471d-a303-24399846d3d1.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "bb71d6d2-641a-4d4d-b430-9db4b60e1bcf",
+            "Value": {
+                "id": "11bc7f8c-cc1a-4d03-b0a1-06f6ca9baaa1",
+                "resourcePath": "sprites\\spr_Nisse_Walk\\spr_Nisse_Walk.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
