@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "9ed731bc-bde7-45af-9f9b-6bdb6b2d556c",
+            "Value": {
+                "id": "832ce6f4-b552-4dd6-8f9e-eb8956f4586a",
+                "resourcePath": "sprites\\spr_Anton_Punch\\spr_Anton_Punch.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a0f208f3-dfd8-4d9b-b753-c8ca540f5c03",
             "Value": {
                 "id": "af643309-28be-469c-92d1-ada8c51a15b0",
