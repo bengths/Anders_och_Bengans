@@ -1,5 +1,5 @@
 // Finite state machine
-if(place_meeting(x,y+1,obj_block)) xVel = hDirection*walkingSpeed;
+if(place_meeting(x,y+1,obj_block)&&state==1) xVel = hDirection*walkingSpeed;
 
 // Falling
 if(!place_meeting(x,y+1,obj_block)) {
@@ -33,6 +33,17 @@ x += xVel;
 y += yVel;
 
 // ------------ Animations
+
+if(yVel != 0) sprite_index = spr_Nisse_Fall;
+
+// Attack
+if(yVel == 0 && can_attack && distance_to_object(obj_player)<1000) {
+	sprite_index = spr_Nisse_Fire;
+	state = 2;
+	xVel = 0;
+	can_attack = false;
+	alarm_set(0,irandom_range(20,100));
+}
 
 // Walking
 if(yVel == 0 && state == 1) sprite_index = spr_Nisse_Walk;

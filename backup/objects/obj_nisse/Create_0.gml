@@ -7,7 +7,10 @@ fallVel = 0;
 maxFallVel=16;
 fallAcc = 2;
 walkingSpeed = 3;
-image_speed = 0.8;
+animation_speed = 0.8;
+image_speed = animation_speed;
+
+can_attack = true;
 
 
 // Kinematics
