@@ -47,40 +47,11 @@ if(place_meeting(x+xVel,y,obj_block)) {
 y += yVel;
 x += xVel;
 
-
-/*
-if(place_meeting(x,y+fallVel,obj_block)) {
-	jumpVel = 0;
-	fallVel = 0;	
-}
-
-// Check for floor benath player
-if(place_meeting(x,y+1,obj_block)) {
-fallVel = 0;
-// Jump
-yVel = jumpAcc * key_up;
-// Update horizontal speed
-if(abs(walkSpeed)<maxWalkVel) walkSpeed += hDirection * walkInvFriction;
-if(abs(walkSpeed)>maxWalkVel && hDirection != 0) walkSpeed = maxWalkVel*hDirection;
-// Check for walls
-if(place_meeting(x+walkSpeed,y-1,obj_block) && walkSpeed != 0) walkSpeed = 0;
-// Horizontal speed loss
-if(hDirection == 0 && walkSpeed != 0) {
-	walkSpeed -= walkInvFriction*walkStopFriction*sign(xVel);
-	// Stop oscillations if vel = 0 overidden
-	if(walkSpeed *(-1)*sign(xVel)>0) walkSpeed = 0;
-}
-
-}
+// ---- Graphics ----
+// Idlg
+if(xVel == 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) sprite_index = spr_Anton;
+if(xVel != 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) sprite_index = spr_Anton_Walk;
 
 
-if(fallVel - jumpVel < maxFallVel && !(place_meeting(x,y+fallVel,obj_block))) fallVel += fallAcc;
-
-
-
-// Update kinematics
-yVel =  fallVel - jumpVel;
-xVel = walkSpeed;
-if(!place_meeting(x,y+yVel,obj_block)) y += yVel;
-if(!place_meeting(x+xVel,y,obj_block)) x += walkSpeed;
-
+if(hDirection != 0) lastDirection = hDirection;
+image_xscale = lastDirection;	
