@@ -1,9 +1,9 @@
 /// @description Insert description here
 
 // Material specific parameters
-normal_walkInvFriction = 0.8;
-normal_walkStopFriction = 1.2;
-normal_maxWalkVel = 16;
+normal_walkInvFriction = 1.1;
+normal_walkStopFriction = 1.6;
+normal_maxWalkVel = 10;
 normal_jumpAcc = 24;
 normal_animation_speed = 0.8;
 // Parameters
@@ -12,7 +12,6 @@ jumpAcc = normal_jumpAcc;
 fallVel = 0;
 maxFallVel=16;
 fallAcc = 2;
-walkSpeed = 0;
 walkInvFriction = normal_walkInvFriction;
 walkStopFriction = normal_walkStopFriction;
 maxWalkVel = normal_maxWalkVel;

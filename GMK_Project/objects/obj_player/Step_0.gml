@@ -12,7 +12,7 @@ if(place_meeting(x,y+1,obj_block)) {
 	// Jumping
 		yVel =	- key_up * jumpAcc;
 	// Walking
-	if(abs(walkSpeed)<maxWalkVel) xVel += hDirection * walkInvFriction;
+	if(abs(xVel)<maxWalkVel) xVel += hDirection * walkInvFriction;
 	
 	// Horizontal speed loss
 	if(hDirection == 0 && xVel != 0) {
@@ -31,6 +31,13 @@ if(place_meeting(x,y+1,obj_block)) {
 if(place_meeting(x,y+yVel,obj_block)) {
 	while(!place_meeting(x,y+sign(yVel),obj_block))
 		y += sign(yVel);
+	
+	// Create dust on ground when landing
+	if(place_meeting(x,y+1,obj_block) && yVel > 0)	instance_create_depth(x-175,y+25,-10,obj_dust);
+	if(place_meeting(x,y+1,obj_block) && yVel > 0)	instance_create_depth(x-190,y+25,-10,obj_dust);
+	if(place_meeting(x,y+1,obj_block)&& yVel > 0 && random_range(0,2)>1)	instance_create_depth(x-175,y+25,-10,obj_dust);
+	if(place_meeting(x,y+1,obj_block)&& yVel > 0 && random_range(0,2)>1)	instance_create_depth(x-175,y+25,-10,obj_dust);
+	// Set velocityt to zero
 	yVel = 0;
 }
 
@@ -52,7 +59,10 @@ if(xVel == 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) {
 	image_speed = normal_animation_speed;
 	}
 // Walking
-if(xVel != 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) sprite_index = spr_Anton_Walk;
+if(xVel != 0 && yVel == 0 && place_meeting(x,y+1,obj_block)) {
+	sprite_index = spr_Anton_Walk;
+	image_speed = normal_animation_speed;
+}
 // Falling
 if(yVel > 0) {
 	sprite_index = spr_Anton_Fall;
@@ -69,3 +79,4 @@ if(yVel <= 0 && !place_meeting(x,y+1,obj_block)) {
 // Direction
 if(hDirection != 0) lastDirection = hDirection;
 image_xscale = lastDirection;	
+ 
