@@ -31,6 +31,22 @@
     },
     "resources": [
         {
+            "Key": "037d7b7d-7ef5-4197-8b20-cda3af995304",
+            "Value": {
+                "id": "a3e2d842-b455-4cd6-a3f8-f3391383fd66",
+                "resourcePath": "sprites\\spr_Fredrik_Fly_Ascend\\spr_Fredrik_Fly_Ascend.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "0b223da6-afd7-4578-8dec-0ec80deda780",
+            "Value": {
+                "id": "abb02cec-0607-4a03-ac8e-717cd4c5f9a3",
+                "resourcePath": "sprites\\spr_Fredrik_Idle\\spr_Fredrik_Idle.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "0e5d6dca-6612-45c3-ad35-7c77267b737d",
             "Value": {
                 "id": "ca0f2693-9239-46f4-a8b8-a4078ec756ad",
@@ -44,6 +60,14 @@
                 "id": "ef048fff-e021-400d-87e2-867e71ecbc37",
                 "resourcePath": "views\\15552ca1-28db-4bf0-b32a-12668850e85c.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "166d5a33-705f-47a5-9664-2e3d2ff6df66",
+            "Value": {
+                "id": "69eb1a1d-0d69-4d84-8d2c-626adb00d6ed",
+                "resourcePath": "sprites\\spr_Fredrik_Fly_Descend\\spr_Fredrik_Fly_Descend.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -156,6 +180,14 @@
                 "id": "4973bee7-f3c5-4206-b00b-b0ab6404d063",
                 "resourcePath": "views\\6a96b2b2-251f-4821-8a2d-569c8455cbae.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "6da7955f-73d5-43af-952e-3f76194ef0d0",
+            "Value": {
+                "id": "934d0871-e9ac-462a-851d-1c4416bbc6fb",
+                "resourcePath": "sprites\\spr_Fredrik_Fly\\spr_Fredrik_Fly.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
