@@ -31,14 +31,6 @@
     },
     "resources": [
         {
-            "Key": "037d7b7d-7ef5-4197-8b20-cda3af995304",
-            "Value": {
-                "id": "a3e2d842-b455-4cd6-a3f8-f3391383fd66",
-                "resourcePath": "sprites\\spr_Fredrik_Fly_Ascend\\spr_Fredrik_Fly_Ascend.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "0b223da6-afd7-4578-8dec-0ec80deda780",
             "Value": {
                 "id": "abb02cec-0607-4a03-ac8e-717cd4c5f9a3",
@@ -60,14 +52,6 @@
                 "id": "ef048fff-e021-400d-87e2-867e71ecbc37",
                 "resourcePath": "views\\15552ca1-28db-4bf0-b32a-12668850e85c.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "166d5a33-705f-47a5-9664-2e3d2ff6df66",
-            "Value": {
-                "id": "69eb1a1d-0d69-4d84-8d2c-626adb00d6ed",
-                "resourcePath": "sprites\\spr_Fredrik_Fly_Descend\\spr_Fredrik_Fly_Descend.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -183,14 +167,6 @@
             }
         },
         {
-            "Key": "6da7955f-73d5-43af-952e-3f76194ef0d0",
-            "Value": {
-                "id": "934d0871-e9ac-462a-851d-1c4416bbc6fb",
-                "resourcePath": "sprites\\spr_Fredrik_Fly\\spr_Fredrik_Fly.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "6f865784-f653-4e19-ba47-6188391086da",
             "Value": {
                 "id": "7334d3df-1471-419c-9348-6254aef2c76e",
@@ -212,6 +188,14 @@
                 "id": "c6421ec9-9e30-4b64-83e9-ff79d1bdfde9",
                 "resourcePath": "views\\729df9a4-69e2-4d69-a1c2-9a4d648be63e.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "796367c0-1b85-4a6f-b2e8-da37dfc38ddf",
+            "Value": {
+                "id": "985ebb16-695b-477f-b1f3-af908c779de8",
+                "resourcePath": "sprites\\spr_Johan\\spr_Johan.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
