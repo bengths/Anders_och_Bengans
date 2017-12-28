@@ -183,6 +183,14 @@
             }
         },
         {
+            "Key": "727fe3af-61ab-464f-a6cf-eb3405641013",
+            "Value": {
+                "id": "84a91687-f7b4-4285-9807-f6f4627b8c5a",
+                "resourcePath": "sprites\\spr_Anders\\spr_Anders.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "729df9a4-69e2-4d69-a1c2-9a4d648be63e",
             "Value": {
                 "id": "c6421ec9-9e30-4b64-83e9-ff79d1bdfde9",
