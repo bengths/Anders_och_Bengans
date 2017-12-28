@@ -391,6 +391,14 @@
             }
         },
         {
+            "Key": "ea2bd588-5f43-4201-8c60-f6a6dd1b3348",
+            "Value": {
+                "id": "e01b8e83-ff1f-416d-8b9d-57abf681a568",
+                "resourcePath": "sprites\\spr_Magnus\\spr_Magnus.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "f054fd26-4528-4a52-80a0-82b01b1e1e79",
             "Value": {
                 "id": "3bd2adb2-548a-4ee9-bb15-ea0a1e056360",
