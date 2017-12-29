@@ -71,24 +71,49 @@ public class Player_Move_Prototype : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
-		Debug.Log ("Player has collided with " + col.collider.name);
+		//Debug.Log ("Player has collided with " + col.collider.name);
 	}
 
 	void PlayerRaycast () {
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down);
-		if (hit != null && hit.collider != null && hit.distance < 1.5f && hit.collider.tag == "Enemy") { // Hitting enemy from above
+		//TODO FIX THIS AWFUL CODE AT SOME POINT!
+
+		// Hitting from side
+		RaycastHit2D rayRight = Physics2D.Raycast (transform.position, Vector2.right);
+		if (rayRight != null && rayRight.collider != null && rayRight.distance < 1.5f && Input.GetButtonDown ("Fire1") && !GetComponent<SpriteRenderer> ().flipX) {
+			if (rayRight.collider.tag == "Enemy") {
+				rayRight.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
+				rayRight.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
+			} else if (rayRight.collider.tag == "Breakable") {
+				Destroy (rayRight.collider.gameObject);
+			}
+		}
+		RaycastHit2D rayLeft = Physics2D.Raycast (transform.position, Vector2.left);
+		if (rayLeft != null && rayLeft.collider != null && rayLeft.distance < 1.5f && Input.GetButtonDown ("Fire1") && GetComponent<SpriteRenderer> ().flipX) {
+			if (rayLeft.collider.tag == "Enemy") {
+				rayLeft.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
+				rayLeft.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
+			} else if (rayLeft.collider.tag == "Breakable") {
+				Destroy (rayLeft.collider.gameObject);
+			}
+		}
+
+
+
+		// Hopping onto
+		RaycastHit2D rayDown = Physics2D.Raycast (transform.position, Vector2.down);
+		if (rayDown != null && rayDown.collider != null && rayDown.distance < 1.5f && rayDown.collider.tag == "Enemy") { // Hitting enemy from above
 			GetComponent<Rigidbody2D> ().AddForce (Vector2.up * 500); // Player jumps
-			//hit.collider.gameObject.GetComponent<Rigidbody2D> ().AddForce (Vector2.right * 200);
-			//hit.collider.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
-			//hit.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
-			//Destroy (hit.collider.gameObject);	// Kill enemy
-			hit.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
-			hit.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;	
+			//rayDown.collider.gameObject.GetComponent<Rigidbody2D> ().AddForce (Vector2.right * 200);
+			//rayDown.collider.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+			//rayDown.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
+			//Destroy (rayDown.collider.gameObject);	// Kill enemy
+			rayDown.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
+			rayDown.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;	
 
 		}
-		if (hit != null && hit.collider != null && hit.distance < 1.5f && hit.collider.tag != "Enemy") {
-			isGrounded = true;
 
+		if (rayDown != null && rayDown.collider != null && rayDown.distance < 1.2f && rayDown.collider.tag != "Enemy") {
+			isGrounded = true;
 		}
 	}
 
