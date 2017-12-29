@@ -7,10 +7,12 @@ public class Player_Move_Prototype : MonoBehaviour {
 	public int playerSpeed = 10;
 	public int playerJumpPower = 1250;
 	private float moveX;
+	public bool isGrounded = false;
 
 	// Update is called once per frame
 	void Update () {
 		PlayerMove();
+		PlayerRaycast ();
 	}
 
 	void PlayerMove() {
@@ -19,7 +21,7 @@ public class Player_Move_Prototype : MonoBehaviour {
 
 
 		// Jumping
-		if (Input.GetButtonDown ("Jump")) {
+		if (Input.GetButtonDown ("Jump") && isGrounded) {
 			Jump();
 			GetComponent<Animator> ().SetBool ("isJumping", true);
 		} 
@@ -65,8 +67,30 @@ public class Player_Move_Prototype : MonoBehaviour {
 	void Jump(){
 		// Jumping Code
 		GetComponent<Rigidbody2D>().AddForce (Vector2.up * playerJumpPower);
+		isGrounded = false;
 	}
 
+	void OnCollisionEnter2D (Collision2D col) {
+		Debug.Log ("Player has collided with " + col.collider.name);
+	}
+
+	void PlayerRaycast () {
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down);
+		if (hit != null && hit.collider != null && hit.distance < 1.5f && hit.collider.tag == "Enemy") { // Hitting enemy from above
+			GetComponent<Rigidbody2D> ().AddForce (Vector2.up * 500); // Player jumps
+			//hit.collider.gameObject.GetComponent<Rigidbody2D> ().AddForce (Vector2.right * 200);
+			//hit.collider.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
+			//hit.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
+			//Destroy (hit.collider.gameObject);	// Kill enemy
+			hit.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
+			hit.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;	
+
+		}
+		if (hit != null && hit.collider != null && hit.distance < 1.5f && hit.collider.tag != "Enemy") {
+			isGrounded = true;
+
+		}
+	}
 
 }
 

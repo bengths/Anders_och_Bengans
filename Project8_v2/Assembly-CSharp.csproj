@@ -51,9 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Background_Move.cs" />
      <Compile Include="Assets\Scripts\CameraSystem.cs" />
+     <Compile Include="Assets\Scripts\Enemy_Health.cs" />
+     <Compile Include="Assets\Scripts\EnemyMove.cs" />
      <Compile Include="Assets\Scripts\Player_Health.cs" />
      <Compile Include="Assets\Scripts\Player_Move_Prototype.cs" />
+     <Compile Include="Assets\Scripts\Player_Score.cs" />
+     <None Include="Assets\Sprites\Platform\public-license.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -87,14 +87,6 @@
             }
         },
         {
-            "Key": "28213ea7-0e95-45b1-83fb-1d39b27c3528",
-            "Value": {
-                "id": "74d89d6b-7c62-4f29-94b2-2e7e6825bab0",
-                "resourcePath": "sprites\\spr_Anton_Jump\\spr_Anton_Jump.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
             "Key": "33249887-63e7-4c76-8a3d-8228a56cc1bb",
             "Value": {
                 "id": "cb1e00b7-8e81-4f42-908d-6d71da9e6226",
@@ -220,22 +212,6 @@
                 "id": "2a06f591-60da-438c-8eb1-d70d9252e7f7",
                 "resourcePath": "views\\7c1053c0-8522-4039-8f6b-a7c1478ac83a.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "840d8a95-0836-43e9-a49d-0c55f38b078b",
-            "Value": {
-                "id": "30fe447f-b8a4-4f39-ab84-3b350a017c54",
-                "resourcePath": "sprites\\spr_Anton_Fall\\spr_Anton_Fall.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "873c2fe6-33b1-471f-bbb3-11a5240cc1a5",
-            "Value": {
-                "id": "afc17ab9-f00e-496d-91eb-e9cfde226470",
-                "resourcePath": "sprites\\spr_Anton_Walk\\spr_Anton_Walk.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
