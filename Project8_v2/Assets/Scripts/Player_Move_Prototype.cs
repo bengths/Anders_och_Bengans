@@ -23,9 +23,13 @@ public class Player_Move_Prototype : MonoBehaviour {
 			Jump();
 			GetComponent<Animator> ().SetBool ("isJumping", true);
 		} 
+
 		if (gameObject.GetComponent<Rigidbody2D> ().velocity.y < 0) {
 			// Player is falling
 			GetComponent<Animator> ().SetBool ("isJumping", false);
+			GetComponent<Animator> ().SetBool ("isFalling", true);
+		} else {
+			GetComponent<Animator> ().SetBool ("isFalling", false);
 		}
 
 		// Punching

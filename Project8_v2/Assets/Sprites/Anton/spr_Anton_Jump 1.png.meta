@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 966ac115958639144bd3a96c118bc05c
-timeCreated: 1514501291
+guid: 56286ccd0a3a1f343bfea8ea6a4efee0
+timeCreated: 1514538319
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spr_Anton_Fall_0
-    21300002: spr_Anton_Fall_1
+    21300000: spr_Anton_Jump 1_0
+    21300002: spr_Anton_Jump 1_1
+    21300004: spr_Anton_Jump 1_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -82,7 +83,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_Anton_Fall_0
+      name: spr_Anton_Jump 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -96,10 +97,24 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spr_Anton_Fall_1
+      name: spr_Anton_Jump 1_1
       rect:
         serializedVersion: 2
         x: 58
+        y: 0
+        width: 58
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spr_Anton_Jump 1_2
+      rect:
+        serializedVersion: 2
+        x: 116
         y: 0
         width: 58
         height: 96
