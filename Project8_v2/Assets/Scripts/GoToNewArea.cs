@@ -11,7 +11,7 @@ public class GoToNewArea : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D (Collider2D trig) {
-		if (Input.GetButtonDown("Vertical")) {
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			trig.gameObject.transform.position = sp2.gameObject.transform.position;
 		}
 	}

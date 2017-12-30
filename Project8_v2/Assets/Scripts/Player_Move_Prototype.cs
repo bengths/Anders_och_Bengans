@@ -5,9 +5,22 @@ using UnityEngine;
 public class Player_Move_Prototype : MonoBehaviour {
 
 	public int playerSpeed = 10;
-	public int playerJumpPower = 1250;
+	//public int playerJumpPower = 1250;
+	public float playerJumpHeight;
 	private float moveX;
-	public bool isGrounded = false;
+
+	public Transform groundCheck;
+	public float groundCheckRadius;
+	public LayerMask whatIsGround;
+	private bool isGrounded;
+
+	private bool doubleJumped;
+
+	// Checks if player is touching the solid ground layer
+	//void FixedUpdate () {
+	//	isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, whatIsGround);
+	//}
+
 
 	// Update is called once per frame
 	void Update () {
@@ -21,16 +34,28 @@ public class Player_Move_Prototype : MonoBehaviour {
 
 
 		// Jumping
+		isGrounded = Physics2D.OverlapCircle (groundCheck.position, groundCheckRadius, whatIsGround);
+		if (isGrounded) {
+			doubleJumped = false;
+		}
+
 		if (Input.GetButtonDown ("Jump") && isGrounded) {
 			Jump();
 			GetComponent<Animator> ().SetBool ("isJumping", true);
 		} 
 
+		if (Input.GetButtonDown ("Jump") && !isGrounded && !doubleJumped) {
+			Jump ();
+			GetComponent<Animator> ().SetBool ("isJumping", true);
+			doubleJumped = true;
+		}
+
+
 		if (gameObject.GetComponent<Rigidbody2D> ().velocity.y < 0) {
 			// Player is falling
 			GetComponent<Animator> ().SetBool ("isJumping", false);
 			GetComponent<Animator> ().SetBool ("isFalling", true);
-		} else {
+		} else if (isGrounded || doubleJumped) {
 			GetComponent<Animator> ().SetBool ("isFalling", false);
 		}
 
@@ -66,8 +91,9 @@ public class Player_Move_Prototype : MonoBehaviour {
 
 	void Jump(){
 		// Jumping Code
-		GetComponent<Rigidbody2D>().AddForce (Vector2.up * playerJumpPower);
-		isGrounded = false;
+		gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJumpHeight);
+		//GetComponent<Rigidbody2D>().AddForce (Vector2.up * playerJumpPower);
+		//isGrounded = false;
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
@@ -93,6 +119,8 @@ public class Player_Move_Prototype : MonoBehaviour {
 				rayLeft.collider.gameObject.GetComponent<Animator> ().SetBool ("isDying", true);
 				rayLeft.collider.gameObject.GetComponent<EnemyMove> ().enabled = false;
 			} else if (rayLeft.collider.tag == "Breakable") {
+
+
 				Destroy (rayLeft.collider.gameObject);
 			}
 		}
@@ -112,10 +140,14 @@ public class Player_Move_Prototype : MonoBehaviour {
 
 		}
 
-		if (rayDown != null && rayDown.collider != null && rayDown.distance < 1.2f && rayDown.collider.tag != "Enemy") {
-			isGrounded = true;
-		}
+		//if (rayDown != null && rayDown.collider != null && rayDown.distance < 1.2f && rayDown.collider.tag != "Enemy") {
+		//	isGrounded = true;
+		//}
+
+
+
 	}
+
 
 }
 

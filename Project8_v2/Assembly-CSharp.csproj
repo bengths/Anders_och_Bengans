@@ -53,11 +53,15 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Background_Move.cs" />
      <Compile Include="Assets\Scripts\CameraSystem.cs" />
+     <Compile Include="Assets\Scripts\Checkpoints.cs" />
      <Compile Include="Assets\Scripts\Clouds.cs" />
      <Compile Include="Assets\Scripts\DataManagement.cs" />
+     <Compile Include="Assets\Scripts\DestroyFinishedParticle.cs" />
      <Compile Include="Assets\Scripts\Enemy_Health.cs" />
      <Compile Include="Assets\Scripts\EnemyMove.cs" />
      <Compile Include="Assets\Scripts\GoToNewArea.cs" />
+     <Compile Include="Assets\Scripts\KillPlayer.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Player_Health.cs" />
      <Compile Include="Assets\Scripts\Player_Move_Prototype.cs" />
      <Compile Include="Assets\Scripts\Player_Score.cs" />

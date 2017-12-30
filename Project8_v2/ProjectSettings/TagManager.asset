@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Baesk
   - Breakable
+  - Spikes
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Foreground
   - Player
   - Background
-  - 
+  - Ground
   - 
   - 
   - 

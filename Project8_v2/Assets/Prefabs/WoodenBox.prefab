@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4801259338218022}
   - component: {fileID: 212636366771672702}
   - component: {fileID: 61102005946603470}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WoodenBox
   m_TagString: Breakable
   m_Icon: {fileID: 0}
