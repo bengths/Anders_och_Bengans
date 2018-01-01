@@ -87,6 +87,14 @@
             }
         },
         {
+            "Key": "27e9f370-e273-41bb-bfec-c229c541cfad",
+            "Value": {
+                "id": "94d2361b-578b-449b-9998-8233338a69e1",
+                "resourcePath": "sprites\\spr_PedoBamse\\spr_PedoBamse.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "33249887-63e7-4c76-8a3d-8228a56cc1bb",
             "Value": {
                 "id": "cb1e00b7-8e81-4f42-908d-6d71da9e6226",
