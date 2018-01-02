@@ -303,6 +303,14 @@
             }
         },
         {
+            "Key": "b24e433f-76e4-4e0f-9e19-1c4ef4b3e63f",
+            "Value": {
+                "id": "d4a22c31-b707-49b8-a93e-b6803d87239e",
+                "resourcePath": "sprites\\spr_Dick\\spr_Dick.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b4ac22fc-e7ef-4188-8f21-ab8a8c9cf8af",
             "Value": {
                 "id": "3b3d2be1-e186-42ff-ac6c-d84ee8981b74",
