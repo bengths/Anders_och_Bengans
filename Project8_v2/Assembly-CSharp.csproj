@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scoreText.cs" />
      <Compile Include="Assets\Scripts\Background_Move.cs" />
      <Compile Include="Assets\Scripts\CameraSystem.cs" />
      <Compile Include="Assets\Scripts\Checkpoints.cs" />
@@ -59,6 +60,11 @@
      <Compile Include="Assets\Scripts\DestroyFinishedParticle.cs" />
      <Compile Include="Assets\Scripts\Enemy_Health.cs" />
      <Compile Include="Assets\Scripts\EnemyMove.cs" />
+     <Compile Include="Assets\Scripts\FlappyFredrik\CountDownText.cs" />
+     <Compile Include="Assets\Scripts\FlappyFredrik\GameManagerFF.cs" />
+     <Compile Include="Assets\Scripts\FlappyFredrik\HighScoreText.cs" />
+     <Compile Include="Assets\Scripts\FlappyFredrik\Paralaxer.cs" />
+     <Compile Include="Assets\Scripts\FlappyFredrik\PlayerController.cs" />
      <Compile Include="Assets\Scripts\GoToNewArea.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
