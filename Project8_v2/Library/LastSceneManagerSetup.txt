@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Flappy_Fredrik.unity
+- path: Assets/Levels/Title_menu.unity
   isLoaded: 1
   isActive: 1

@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Test_Scene.unity
     guid: 872a096a4d9c7d4469ab24d76a2cd4ec
+  - enabled: 1
+    path: Assets/Levels/Flappy_Fredrik.unity
+    guid: 74cca03312fb8ad4a8923045cdac749c

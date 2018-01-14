@@ -29,6 +29,12 @@ public class GameManagerFF : MonoBehaviour {
 	public bool GameOver {get { return gameOver; }}
 	public int Score {get { return score; }}
 
+	public AudioSource soundtrack;
+
+	void OnCreate() {
+		soundtrack.Play ();
+	}
+
 	void Awake() {
 		Instance = this;
 	}
