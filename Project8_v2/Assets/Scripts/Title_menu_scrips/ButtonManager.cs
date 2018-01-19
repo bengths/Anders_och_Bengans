@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
-	public void NewGameBtn (string newGameLevel) {
-		SceneManager.LoadScene (newGameLevel);
+	public void LoadSceneButton(string newSceneName) {
+		SceneManager.LoadScene(newSceneName);
 	}
 
-	public void ExitGameBtn() {
-		Application.Quit ();
+	public void ExitGameButton() {
+		Application.Quit();
 	}
 }

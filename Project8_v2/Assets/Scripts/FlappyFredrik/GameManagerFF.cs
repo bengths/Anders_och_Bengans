@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManagerFF : MonoBehaviour {
 
-	public delegate void GameDelegate ();
+	public delegate void GameDelegate();
 	public static event GameDelegate OnGameStarted;
 	public static event GameDelegate OnGameOverConfirmed;
 
@@ -26,13 +26,13 @@ public class GameManagerFF : MonoBehaviour {
 	int score = 0;
 	bool gameOver = true;
 
-	public bool GameOver {get { return gameOver; }}
+	public bool GameOver {get { return gameOver; } }
 	public int Score {get { return score; }}
 
 	public AudioSource soundtrack;
 
 	void OnCreate() {
-		soundtrack.Play ();
+		soundtrack.Play();
 	}
 
 	void Awake() {
