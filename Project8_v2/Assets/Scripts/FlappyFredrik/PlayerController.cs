@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour {
 
-	public delegate void PlayerDelegate ();
+	public delegate void PlayerDelegate();
 	public static event PlayerDelegate OnPlayerDied;
 	public static event PlayerDelegate OnPlayerScored;
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 		GameManagerFF.OnGameOverConfirmed -= OnGameOverConfirmed;
 	}
 
-	void OnGameStarted () { // Reset physics
+	void OnGameStarted() { // Reset physics
 		rigidbody.velocity = Vector3.zero;
 		rigidbody.simulated = true;
 
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour {
 			rigidbody.AddForce (Vector2.up * tapForce, ForceMode2D.Force); 
 		}
 
-		transform.rotation = Quaternion.Lerp (transform.rotation, downRotation, tiltSmooth * Time.deltaTime);
+		transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, tiltSmooth * Time.deltaTime);
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
