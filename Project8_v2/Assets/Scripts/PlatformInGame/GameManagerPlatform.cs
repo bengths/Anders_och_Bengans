@@ -13,7 +13,7 @@ public class GameManagerPlatform : MonoBehaviour {
 
     public static GameManagerPlatform instance;
     enum GameState{ Playing, Paused, GameOver, Respawn, Cutscene }
-    GameState gameState;
+    GameState gameState = GameState.Playing;
     // Game State UI:s
     public GameObject playingUI;
     public GameObject pausedUI;
@@ -62,6 +62,13 @@ public class GameManagerPlatform : MonoBehaviour {
         PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
         PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
     }
+
+	void OnDisable()
+	{
+		// Subscribe all listeners
+		PlayerControllerPlatform.OnPlayerScored -= OnPlayerScored;
+		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
+	}
 
     void setAllStatesFalseUI()
     {

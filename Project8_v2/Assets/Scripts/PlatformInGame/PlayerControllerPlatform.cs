@@ -34,6 +34,13 @@ public class PlayerControllerPlatform : MonoBehaviour {
         GameManagerPlatform.OnUnpauseGame += OnUnpauseGame;
     }
 
+	void OnDisable()
+	{
+		GameManagerPlatform.OnPauseGame -= OnPauseGame;
+		GameManagerPlatform.OnUnpauseGame -= OnUnpauseGame;
+	}
+
+
     void OnPauseGame()
     {
         ;
