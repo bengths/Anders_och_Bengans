@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Levels/Title_menu.unity
     guid: 64832aa84c0ceb943845b803a4d8bafa
   - enabled: 1
-    path: Assets/Levels/Test_Scene.unity
-    guid: 872a096a4d9c7d4469ab24d76a2cd4ec
+    path: Assets/Levels/Demo_Scene.unity
+    guid: ae5eae66f587815459276a012e9342f5
   - enabled: 1
     path: Assets/Levels/Flappy_Fredrik.unity
     guid: 74cca03312fb8ad4a8923045cdac749c
+  - enabled: 1
+    path: Assets/Levels/Test_Scene.unity
+    guid: 872a096a4d9c7d4469ab24d76a2cd4ec
