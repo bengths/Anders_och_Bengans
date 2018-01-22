@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeInFrames: 0
-  timeAreaShownRange: {x: -0.17314285, y: 13.591714}
+  timeAreaShownRange: {x: -0.26923138, y: 17.66158}
   showAudioWaveform: 1
   trackHeight: 30
   trackScale: 1
@@ -23,13 +23,89 @@ MonoBehaviour:
   - {fileID: 114771069432971178, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
   - {fileID: 114447023125386340, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
   - {fileID: 114996512584631366, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114899208658128038, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114306706969738306, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114280126816263636, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114735307231956272, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114460698894829136, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114013083809335648, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114611087405844976, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114107412885173198, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114814873561328678, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114274869513723648, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114938415939187762, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114422173891921896, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114196103841191760, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114470376474456984, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114594925306287506, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114247992077667344, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114613657728845558, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114803681130333356, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
+  - {fileID: 114251661881248960, guid: bef4a98cced47e94dbc6c83b01ace078, type: 2}
   m_Vals:
   - collapsed: 0
     showInlineCurves: 0
     inlineAnimationCurveHeight: 113
+  - collapsed: 1
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 133
   - collapsed: 0
-    showInlineCurves: 1
+    showInlineCurves: 0
     inlineAnimationCurveHeight: 100
   - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 60
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 0
+    showInlineCurves: 0
+    inlineAnimationCurveHeight: 100
+  - collapsed: 1
     showInlineCurves: 0
     inlineAnimationCurveHeight: 100
