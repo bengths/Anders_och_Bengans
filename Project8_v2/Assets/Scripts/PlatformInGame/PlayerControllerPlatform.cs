@@ -18,9 +18,14 @@ public class PlayerControllerPlatform : MonoBehaviour {
     public static event PlayerDelegateInt OnPlayerHurt;
     public static event PlayerDelegateInt OnPlayerHeal;
 
+    // Characters
+    public enum playerCharacter{Anders, Anton, Dick, Johan, Jonas, Magnus, Marcus };
+    public playerCharacter character;
+
     void Start()
     {
         game = GameManagerPlatform.instance;
+        setCharacterStats(character);
     }
 
     void Update()
@@ -47,6 +52,11 @@ public class PlayerControllerPlatform : MonoBehaviour {
     }
 
     void OnUnpauseGame()
+    {
+        ;
+    }
+
+    void setCharacterStats(playerCharacter hero)
     {
         ;
     }
