@@ -1,0 +1,8 @@
+5.00	<DISABLE>
+1.00	<ENABLE>
+
+1.00	Hi kids! Do you like icecream?
+2.10	Good!
+0.10	More text...
+10.5	<PAUSE>
+0.05	Hi again...
