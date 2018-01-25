@@ -3408,10 +3408,12 @@ MonoBehaviour:
   textBox: {fileID: 146917730}
   theText: {fileID: 1792941204}
   textFile: {fileID: 4900000, guid: c8e837e57c8784a4fa23ad0032611871, type: 3}
-  textLines: []
   displayTime: []
+  isTextboxEnabled: 
+  textLines: []
   currentLine: 0
-  endAtLine: 3
+  endAtLine: 0
+  typeSpeed: 0.05
 --- !u!1 &1823306243
 GameObject:
   m_ObjectHideFlags: 0
