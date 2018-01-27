@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class CutsceneDialogue : MonoBehaviour {
 
 	public GameObject textBox;
-
 	public Text theText;
+	public AudioSource[] voices;	// For voices of characters 
+
 
 	public TextAsset textFile;
 	public float[] displayTime;		// Time for being displayed
 	public int[] isTextboxEnabled; 	// 1 == true, 0 == false
+	public int[] characterTalking;	// Label for which character is talking
 	public string[] textLines;		// Lines to be displayed
+
 
 	public int currentLine;
 	public int endAtLine;
@@ -28,15 +31,17 @@ public class CutsceneDialogue : MonoBehaviour {
 			textLines = (textFile.text.Split ('\n'));
 			displayTime = new float[textLines.Length];
 			isTextboxEnabled = new int[textLines.Length];
+			characterTalking = new int[textLines.Length];
 
 			// Initialize displayTime
 			for (int i = 0; i < textLines.Length-1; i++) {
 				string[] tmpStr = (textLines [i].Split ('\t'));
-				Debug.Log (tmpStr[0]);
+				//Debug.Log (tmpStr[0]);
 
 				displayTime [i] = float.Parse(tmpStr [0]);
 				isTextboxEnabled [i] = int.Parse (tmpStr [1]);
-				textLines [i] = tmpStr [2];
+				characterTalking [i] = int.Parse (tmpStr [2]);
+				textLines [i] = tmpStr [3];
 			}
 
 		}
@@ -91,6 +96,7 @@ public class CutsceneDialogue : MonoBehaviour {
 		isTyping = true;
 		for(int letter = 0; letter < lineOfText.Length; letter++) {
 			theText.text += lineOfText [letter];
+			voices [characterTalking [currentLine]].Play ();
 			yield return new WaitForSeconds (typeSpeed);
 		}
 		theText.text = lineOfText;

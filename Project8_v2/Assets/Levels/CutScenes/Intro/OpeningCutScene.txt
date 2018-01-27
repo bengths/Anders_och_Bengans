@@ -1,6 +1,35 @@
-2.01	0	
-10.00	1	Hi kids! Do you like icecream?
-3.00	1	Good!
-2.00	1	More text...
-3.00	0	
-2.00	1	Hi again...
+27.40	0	0	
+03.00	1	0	Hi kids! Do you like icecream?
+03.60	0	0	
+02.00	1	0	Good!
+06.00	1	0	I've got plenty of delicious icecream in the back of my truck.
+03.00	1	0	Come! Have a look!
+05.30	0	0	
+03.00	1	1	... and that's why women need to put on make-up.
+01.00	0	1	
+02.00	1	1	So...
+07.00	1	1	Just because one lays a vote on one party, doesn't necessairily mean that one would like to live in their ideal society.
+02.20	0	0	
+04.00	1	0	Hi fellas! Do you like icecream?
+02.00	0	0	
+03.00	1	0	Do you like candy?
+01.50	0	0	
+01.50	1	0	Liquour?
+00.50	0	0	
+03.00	1	0	Anything...?
+05.00	0	0	
+03.00	1	0	What about Physics Handbook?
+00.50	0	0	
+01.50	1	1	Dim!!!
+05.00	0	1	
+04.00	1	1	Give him back!
+15.00	0	1	
+02.00	1	1	I lost them...
+01.00	0	1	
+01.50	1	1	...
+03.00	1	1	I must tell THEM...
+00.50	0	0	
+02.00	1	1	It's time to assemble...
+01.00	0	0	
+04.00	1	1	PLUGGANDE ÅTTAN
+02.00	0	0	

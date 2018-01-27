@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Levels\CutScenes\Intro\CutsceneDialogue.cs" />
+     <Compile Include="Assets\Levels\CutScenes\Intro\ScrollingBackground.cs" />
      <Compile Include="Assets\scoreText.cs" />
      <Compile Include="Assets\Scripts\Background_Move.cs" />
      <Compile Include="Assets\Scripts\CameraSystem.cs" />
