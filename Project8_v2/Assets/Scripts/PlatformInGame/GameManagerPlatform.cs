@@ -21,12 +21,15 @@ public class GameManagerPlatform : MonoBehaviour {
     public GameObject respawnUI;
     public GameObject cutsceneUI;
 
-    // Score text
+    // Score text and health text
     public Text textScore;
+	public Text textHealth;
 
     // Variables
     int score = 0;
-    public AudioSource soundtrack;
+	int maxHealth = 100;
+	int health = 100;
+	public AudioSource soundtrack;
 
     // Public functions
     public int getScore()
@@ -59,14 +62,22 @@ public class GameManagerPlatform : MonoBehaviour {
     void OnEnable()
     {
         // Subscribe all listeners
-        PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
+		//PlayerControllerPlatform.OnPlayerHeal += OnPlayerHeal;
+        //PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
+		ObjectStats.OnPlayerHeal += OnPlayerHeal;
+		ObjectStats.OnPlayerHurt += OnPlayerHurt;
+		ObjectStats.OnPlayerScored += OnPlayerScored;
         PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
     }
 
 	void OnDisable()
 	{
 		// Subscribe all listeners
-		PlayerControllerPlatform.OnPlayerScored -= OnPlayerScored;
+		//PlayerControllerPlatform.OnPlayerHeal -= OnPlayerHeal;
+		//PlayerControllerPlatform.OnPlayerScored -= OnPlayerScored;
+		ObjectStats.OnPlayerHeal -= OnPlayerHeal;
+		ObjectStats.OnPlayerHurt -= OnPlayerHurt;
+		ObjectStats.OnPlayerScored -= OnPlayerScored;
 		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
 	}
 
@@ -117,6 +128,27 @@ public class GameManagerPlatform : MonoBehaviour {
         score += a;
         textScore.text = "Score: " + score.ToString();
     }
+
+	void OnPlayerHeal(int a)
+	{
+		if (health + a < maxHealth) {
+			health += a;
+		} else {
+			health = maxHealth;
+		}
+		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
+	}
+
+	void OnPlayerHurt(int a)
+	{
+		if (health - a > 0) {
+			health -= a;
+		} else {
+			health = 0;
+			Debug.Log ("Player has run out of HP!");
+		}
+		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
+	}
 
     void OnPlayerPressPause()
     {

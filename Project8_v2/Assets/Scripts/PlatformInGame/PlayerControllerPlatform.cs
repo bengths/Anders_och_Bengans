@@ -9,14 +9,14 @@ public class PlayerControllerPlatform : MonoBehaviour {
 
     // Delegates
     public delegate void PlayerDelegate();
-    public delegate void PlayerDelegateInt(int a);
+    //public delegate void PlayerDelegateInt(int a);
 
     public static event PlayerDelegate OnPlayerDeath;
     public static event PlayerDelegate OnPlayerPressPause;
 
-    public static event PlayerDelegateInt OnPlayerScored;
-    public static event PlayerDelegateInt OnPlayerHurt;
-    public static event PlayerDelegateInt OnPlayerHeal;
+    //public static event PlayerDelegateInt OnPlayerScored;
+    //public static event PlayerDelegateInt OnPlayerHurt;
+    //public static event PlayerDelegateInt OnPlayerHeal;
 
     // Characters
     public enum playerCharacter{Anders, Anton, Dick, Johan, Jonas, Magnus, Marcus };
@@ -127,10 +127,19 @@ public class PlayerControllerPlatform : MonoBehaviour {
         // Kinematics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
-
+		
     void jump()
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(gameObject.GetComponent<Rigidbody2D>().velocity.x, playerJumpHeight);
     }
+
+	//void OnCollisionEnter2D (Collision2D trig) {
+	//	Debug.Log ("Player has collided with " + trig.collider.name);
+	//	if (trig.gameObject.tag == "Baesk") {
+	//		OnPlayerScored (10);
+	//		Destroy (trig.gameObject);
+	//	}
+	//}
+
 
 }
