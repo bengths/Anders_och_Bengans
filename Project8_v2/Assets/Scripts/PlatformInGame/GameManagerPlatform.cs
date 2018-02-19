@@ -10,6 +10,8 @@ public class GameManagerPlatform : MonoBehaviour {
     public delegate void GameManageDelegate();
     public static event GameManageDelegate OnPauseGame;
     public static event GameManageDelegate OnUnpauseGame;
+	public static event GameManageDelegate OnPlayerDied;
+	//public static event GameManageDelegate OnGameOver;
 
     public static GameManagerPlatform instance;
     enum GameState{ Playing, Paused, GameOver, Respawn, Cutscene }
@@ -24,11 +26,19 @@ public class GameManagerPlatform : MonoBehaviour {
     // Score text and health text
     public Text textScore;
 	public Text textHealth;
+	public Text textLives;
+
+
+	// Settings
+	public int respawnDelay = 2;
 
     // Variables
     int score = 0;
 	int maxHealth = 100;
 	int health = 100;
+	int lives = 3;
+	public GameObject currentCheckpoint;
+
 	public AudioSource soundtrack;
 
     // Public functions
@@ -60,15 +70,16 @@ public class GameManagerPlatform : MonoBehaviour {
     }
 
     void OnEnable()
-    {
-        // Subscribe all listeners
+	{
+		// Subscribe all listeners
 		//PlayerControllerPlatform.OnPlayerHeal += OnPlayerHeal;
-        //PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
+		//PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
 		ObjectStats.OnPlayerHeal += OnPlayerHeal;
 		ObjectStats.OnPlayerHurt += OnPlayerHurt;
 		ObjectStats.OnPlayerScored += OnPlayerScored;
-        PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
-    }
+		Checkpoint.SetCheckpoint += SetCheckpoint;
+		PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
+	}
 
 	void OnDisable()
 	{
@@ -78,6 +89,7 @@ public class GameManagerPlatform : MonoBehaviour {
 		ObjectStats.OnPlayerHeal -= OnPlayerHeal;
 		ObjectStats.OnPlayerHurt -= OnPlayerHurt;
 		ObjectStats.OnPlayerScored -= OnPlayerScored;
+		Checkpoint.SetCheckpoint -= SetCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
 	}
 
@@ -123,6 +135,12 @@ public class GameManagerPlatform : MonoBehaviour {
         }
     }
 
+	void SetCheckpoint (GameObject checkpoint)
+	{
+		currentCheckpoint = checkpoint;
+	}
+
+
     void OnPlayerScored(int a)
     {
         score += a;
@@ -146,9 +164,18 @@ public class GameManagerPlatform : MonoBehaviour {
 		} else {
 			health = 0;
 			Debug.Log ("Player has run out of HP!");
+			lives--;
+			textLives.text = "Lives: x" + lives.ToString ();
+			if (lives == 0) {
+				GameOver ();
+			} else {
+				OnPlayerDied ();
+				health = maxHealth;
+			}
 		}
 		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
 	}
+
 
     void OnPlayerPressPause()
     {
@@ -165,4 +192,8 @@ public class GameManagerPlatform : MonoBehaviour {
             setGameState(GameState.Playing);
         }
     }
+
+	void GameOver () {
+		setGameState (GameState.GameOver);
+	}
 }

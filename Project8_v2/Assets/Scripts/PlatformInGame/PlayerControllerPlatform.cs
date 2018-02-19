@@ -54,24 +54,54 @@ public class PlayerControllerPlatform : MonoBehaviour {
     {
         GameManagerPlatform.OnPauseGame += OnPauseGame;
         GameManagerPlatform.OnUnpauseGame += OnUnpauseGame;
+		GameManagerPlatform.OnPlayerDied += OnPlayerDied;
     }
 
 	void OnDisable()
 	{
 		GameManagerPlatform.OnPauseGame -= OnPauseGame;
 		GameManagerPlatform.OnUnpauseGame -= OnUnpauseGame;
+		GameManagerPlatform.OnPlayerDied -= OnPlayerDied;
 	}
 
 
     void OnPauseGame()
     {
-        ;
+		this.enabled = false;
     }
 
     void OnUnpauseGame()
     {
-        ;
+		this.enabled = true;
     }
+
+
+	void OnPlayerDied() 
+	{
+		// Respawn player
+		RespawnPlayer();
+	}
+
+
+	void RespawnPlayer () {
+		StartCoroutine ("RespawnPlayerCo");
+	}
+
+	IEnumerator RespawnPlayerCo () {
+		//Instantiate (deathParticles, player.transform.position, player.transform.rotation);
+		this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+		this.enabled = false;
+		this.GetComponent<Renderer>().enabled = false;
+
+		yield return new WaitForSeconds (game.respawnDelay);
+		Debug.Log ("Player respawn");
+		this.transform.position = game.currentCheckpoint.transform.position;
+		//Instantiate (spawnParticles, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
+		this.enabled = true;
+		this.GetComponent<Renderer>().enabled = true;
+	}
+
+
 
     void setCharacterStats(playerCharacter hero)
     {
@@ -83,7 +113,7 @@ public class PlayerControllerPlatform : MonoBehaviour {
                 canDoubleJump = true;
                 break;
             case playerCharacter.Magnus:
-                playerJumpHeight = 8;
+                playerJumpHeight = 10;
                 playerSpeed = 8;
                 break;
         }
@@ -96,8 +126,10 @@ public class PlayerControllerPlatform : MonoBehaviour {
         
         // Check if grounded
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-        if(isGrounded)
+		GetComponent<Animator>().SetBool("isGrounded", isGrounded);
+		if(isGrounded)
         {
+			GetComponent<Animator>().SetBool("isJumping", false);
             doubleJumped = false;
             trippleJumped = false;
         }

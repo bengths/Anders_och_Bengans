@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\GoToNewArea.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\PlatformInGame\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\GameManagerPlatform.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\ObjectStats.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\PlayerControllerPlatform.cs" />
