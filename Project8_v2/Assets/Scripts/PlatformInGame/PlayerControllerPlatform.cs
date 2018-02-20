@@ -9,14 +9,9 @@ public class PlayerControllerPlatform : MonoBehaviour {
 
     // Delegates
     public delegate void PlayerDelegate();
-    //public delegate void PlayerDelegateInt(int a);
 
     public static event PlayerDelegate OnPlayerDeath;
     public static event PlayerDelegate OnPlayerPressPause;
-
-    //public static event PlayerDelegateInt OnPlayerScored;
-    //public static event PlayerDelegateInt OnPlayerHurt;
-    //public static event PlayerDelegateInt OnPlayerHeal;
 
     // Characters
     public enum playerCharacter{Anders, Anton, Dick, Johan, Jonas, Magnus, Marcus };
@@ -36,18 +31,24 @@ public class PlayerControllerPlatform : MonoBehaviour {
     private bool isGrounded;
     private bool doubleJumped;
     private bool trippleJumped;
+	private bool isPaused;
+
+	// Particles
+	public GameObject deathParticles;
+	public GameObject spawnParticles;
 
 
     void Start()
     {
         game = GameManagerPlatform.instance;
         setCharacterStats(character);
+		isPaused = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) OnPlayerPressPause();
-        else playerMove(); 
+		if (!isPaused) playerMove(); 
     }
 
     void OnEnable()
@@ -55,40 +56,49 @@ public class PlayerControllerPlatform : MonoBehaviour {
         GameManagerPlatform.OnPauseGame += OnPauseGame;
         GameManagerPlatform.OnUnpauseGame += OnUnpauseGame;
 		GameManagerPlatform.OnPlayerDied += OnPlayerDied;
+		GameManagerPlatform.OnGameOver += OnGameOver;
     }
 
+    
 	void OnDisable()
 	{
 		GameManagerPlatform.OnPauseGame -= OnPauseGame;
 		GameManagerPlatform.OnUnpauseGame -= OnUnpauseGame;
 		GameManagerPlatform.OnPlayerDied -= OnPlayerDied;
+		GameManagerPlatform.OnGameOver -= OnGameOver;
 	}
 
 
     void OnPauseGame()
     {
-		this.enabled = false;
+		isPaused = true;
     }
 
     void OnUnpauseGame()
     {
-		this.enabled = true;
+		isPaused = false;
     }
 
 
-	void OnPlayerDied() 
-	{
-		// Respawn player
+	void OnPlayerDied() {
 		RespawnPlayer();
 	}
 
+	void OnGameOver () {
+		// Freeze player
+		Instantiate (deathParticles, this.transform.position, this.transform.rotation);
+		this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+		isPaused = true;
+		//this.enabled = false;
+		this.GetComponent<Renderer>().enabled = false;
+	}
 
 	void RespawnPlayer () {
 		StartCoroutine ("RespawnPlayerCo");
 	}
 
 	IEnumerator RespawnPlayerCo () {
-		//Instantiate (deathParticles, player.transform.position, player.transform.rotation);
+		Instantiate (deathParticles, this.transform.position, this.transform.rotation);
 		this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 		this.enabled = false;
 		this.GetComponent<Renderer>().enabled = false;
@@ -96,7 +106,7 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		yield return new WaitForSeconds (game.respawnDelay);
 		Debug.Log ("Player respawn");
 		this.transform.position = game.currentCheckpoint.transform.position;
-		//Instantiate (spawnParticles, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
+		Instantiate (spawnParticles, game.currentCheckpoint.transform.position, game.currentCheckpoint.transform.rotation);
 		this.enabled = true;
 		this.GetComponent<Renderer>().enabled = true;
 	}

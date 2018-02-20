@@ -7,12 +7,12 @@ public class Checkpoint : MonoBehaviour {
 	// Delegates
 	public delegate void CheckpointDelegate(GameObject checkpoint);
 
-	public static event CheckpointDelegate SetCheckpoint;
+	public static event CheckpointDelegate setCheckpoint;
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.name == "Player") {
 			Debug.Log("Activated Checkpoint " + gameObject.GetComponent<Transform>().position);
-			SetCheckpoint (gameObject);
+			setCheckpoint (gameObject);
 		}
 	}
 }

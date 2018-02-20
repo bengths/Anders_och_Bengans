@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // Both Model and viewer class in MVC
 public class GameManagerPlatform : MonoBehaviour {
@@ -11,7 +12,8 @@ public class GameManagerPlatform : MonoBehaviour {
     public static event GameManageDelegate OnPauseGame;
     public static event GameManageDelegate OnUnpauseGame;
 	public static event GameManageDelegate OnPlayerDied;
-	//public static event GameManageDelegate OnGameOver;
+	public static event GameManageDelegate OnGameOver;
+	//public static event GameManageDelegate OnReplay;
 
     public static GameManagerPlatform instance;
     enum GameState{ Playing, Paused, GameOver, Respawn, Cutscene }
@@ -37,64 +39,121 @@ public class GameManagerPlatform : MonoBehaviour {
 	int maxHealth = 100;
 	int health = 100;
 	int lives = 3;
+	public GameObject startingCheckpoint;
 	public GameObject currentCheckpoint;
 
 	public AudioSource soundtrack;
 
     // Public functions
-    public int getScore()
-    {
+    public int getScore() {
         return score;
     }
 
-    public bool isGameOver()
-    {
+    public bool isGameOver() {
         return gameState == GameState.GameOver;
     }
 
-    public void pressResumeButton()
-    {
+
+
+	// Button functions and onEvent functions
+    public void pressResumeButton() {
         OnUnpauseGame();
         setGameState(GameState.Playing);
     }
 
+	public void pressReplayButton()	{
+		SceneManager.LoadScene ("Demo_Scene");
+		setGameState (GameState.Playing);
+	}
+
+
+	void OnPlayerScored(int a) {
+		score += a;
+		setScoreText ();
+	}
+
+	void OnPlayerHeal(int a) {
+		if (health + a < maxHealth) {
+			health += a;
+		} else {
+			health = maxHealth;
+		}
+		setHealthText ();
+	}
+
+	void OnPlayerHurt(int a) {
+		if (health - a > 0) {
+			health -= a;
+		} else {
+			health = 0;
+			Debug.Log ("Player has run out of HP!");
+			lives--;
+			setLifeText ();
+			if (lives == 0) {
+				setGameState (GameState.GameOver);
+				setCheckpoint (startingCheckpoint);
+				OnGameOver ();	// Send event
+			} else {
+				OnPlayerDied ();
+				health = maxHealth;
+			}
+		}
+		setHealthText ();
+	}
+		
+	void OnPlayerPressPause() {
+		// Pause game
+		if (gameState == GameState.Playing) {
+			OnPauseGame();
+			setGameState(GameState.Paused);
+			return;
+		}
+		// Unpause game
+		if (gameState == GameState.Paused) {
+			OnUnpauseGame();
+			setGameState(GameState.Playing);
+		}
+	}
+
+
+
+
     // Private functions
-    void Awake()
-    {
+	void Start() {
+		setCheckpoint(startingCheckpoint);
+	}
+
+    void Awake() {
         instance = this;
     }
 
-    void OnCreate()
-    {
+    void OnCreate() {
         soundtrack.Play();
     }
 
-    void OnEnable()
-	{
+	void OnEnable() {
 		// Subscribe all listeners
 		//PlayerControllerPlatform.OnPlayerHeal += OnPlayerHeal;
 		//PlayerControllerPlatform.OnPlayerScored += OnPlayerScored;
 		ObjectStats.OnPlayerHeal += OnPlayerHeal;
 		ObjectStats.OnPlayerHurt += OnPlayerHurt;
 		ObjectStats.OnPlayerScored += OnPlayerScored;
-		Checkpoint.SetCheckpoint += SetCheckpoint;
+		Checkpoint.setCheckpoint += setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
 	}
 
-	void OnDisable()
-	{
+	void OnDisable() {
 		// Subscribe all listeners
 		//PlayerControllerPlatform.OnPlayerHeal -= OnPlayerHeal;
 		//PlayerControllerPlatform.OnPlayerScored -= OnPlayerScored;
 		ObjectStats.OnPlayerHeal -= OnPlayerHeal;
 		ObjectStats.OnPlayerHurt -= OnPlayerHurt;
 		ObjectStats.OnPlayerScored -= OnPlayerScored;
-		Checkpoint.SetCheckpoint -= SetCheckpoint;
+		Checkpoint.setCheckpoint -= setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
 	}
 
-    void setAllStatesFalseUI()
-    {
+    void setAllStatesFalseUI() {
         playingUI.SetActive(false);
         pausedUI.SetActive(false);
         gameOverUI.SetActive(false);
@@ -102,14 +161,12 @@ public class GameManagerPlatform : MonoBehaviour {
         cutsceneUI.SetActive(false);
     }
 
-    void setGameState(GameState state)
-    {
+    void setGameState(GameState state) {
         gameState = state;
         setUIState(state);
     }
 
-    void setUIState(GameState state)
-    {
+    void setUIState(GameState state) {
         switch(state)
         {
             case GameState.Playing:
@@ -135,65 +192,21 @@ public class GameManagerPlatform : MonoBehaviour {
         }
     }
 
-	void SetCheckpoint (GameObject checkpoint)
-	{
+	void setCheckpoint (GameObject checkpoint) {
 		currentCheckpoint = checkpoint;
 	}
 
+	void setScoreText () {
+		textScore.text = "Score: " + score.ToString();
+	}
 
-    void OnPlayerScored(int a)
-    {
-        score += a;
-        textScore.text = "Score: " + score.ToString();
-    }
-
-	void OnPlayerHeal(int a)
-	{
-		if (health + a < maxHealth) {
-			health += a;
-		} else {
-			health = maxHealth;
-		}
+	void setHealthText () {
 		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
 	}
 
-	void OnPlayerHurt(int a)
-	{
-		if (health - a > 0) {
-			health -= a;
-		} else {
-			health = 0;
-			Debug.Log ("Player has run out of HP!");
-			lives--;
-			textLives.text = "Lives: x" + lives.ToString ();
-			if (lives == 0) {
-				GameOver ();
-			} else {
-				OnPlayerDied ();
-				health = maxHealth;
-			}
-		}
-		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
+	void setLifeText() {
+		textLives.text = "Lives: x" + lives.ToString ();
 	}
 
 
-    void OnPlayerPressPause()
-    {
-        // Pause game
-        if (gameState == GameState.Playing) {
-            OnPauseGame();
-            setGameState(GameState.Paused);
-            return;
-        }
-        // Unpause game
-        if (gameState == GameState.Paused)
-        {
-            OnUnpauseGame();
-            setGameState(GameState.Playing);
-        }
-    }
-
-	void GameOver () {
-		setGameState (GameState.GameOver);
-	}
 }
