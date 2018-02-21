@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Levels/Title_menu.unity
     guid: 64832aa84c0ceb943845b803a4d8bafa
   - enabled: 1
+    path: Assets/Levels/CutScenes/Intro.unity
+    guid: f0ed33ee0f560624ca630655c448d82a
+  - enabled: 1
+    path: Assets/Levels/Level_Select.unity
+    guid: 088f45c362360ea4c9b99cd72f313ed0
+  - enabled: 1
     path: Assets/Levels/Demo_Scene.unity
     guid: ae5eae66f587815459276a012e9342f5
   - enabled: 1

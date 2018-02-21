@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\Checkpoint.cs" />
+     <Compile Include="Assets\Scripts\PlatformInGame\CutSceneManager.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\GameManagerPlatform.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\ObjectStats.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\PlayerControllerPlatform.cs" />
@@ -78,6 +79,9 @@
      <Compile Include="Assets\Scripts\Player_Move_Prototype.cs" />
      <Compile Include="Assets\Scripts\Player_Score.cs" />
      <Compile Include="Assets\Scripts\Title_menu_scrips\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\Title_menu_scrips\LevelSelectButton.cs" />
+     <Compile Include="Assets\Scripts\Title_menu_scrips\LevelSelectButtonManager.cs" />
+     <Compile Include="Assets\Scripts\Title_menu_scrips\LevelSelectGameManager.cs" />
      <None Include="Assets\Sprites\Platform\public-license.txt" />
      <None Include="Assets\Levels\CutScenes\Intro\OpeningCutScene.txt" />
  <Reference Include="UnityEngine.UI">
