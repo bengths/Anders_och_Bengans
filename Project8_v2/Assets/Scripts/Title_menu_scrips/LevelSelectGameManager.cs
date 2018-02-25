@@ -7,7 +7,7 @@ public class LevelSelectGameManager : MonoBehaviour {
 
 	void Start () {
 		// Collect necessairy data from PlayerPrefs to set up Level Select menue
-		PlayerPrefs.GetInt();
+		//PlayerPrefs.GetInt();
 
 		// Play Soundtrack
 	}
