@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Levels/Title_menu.unity
+=======
+- path: Assets/Levels/Demo_Scene.unity
+>>>>>>> 568fa120eeb8b75db6d92bef5ffc9f9cf11eba2a
   isLoaded: 1
   isActive: 1
