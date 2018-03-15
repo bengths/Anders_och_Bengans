@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Levels/Demo_Scene.unity
+=======
+- path: Assets/Levels/Level_Select.unity
+>>>>>>> 3d36bdf1d3195b3688e10388acef7f795732cecc
   isLoaded: 1
   isActive: 1
