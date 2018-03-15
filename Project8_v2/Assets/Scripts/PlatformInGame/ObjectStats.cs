@@ -23,7 +23,6 @@ public class ObjectStats : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D trig)
 	{
-		Debug.Log ("Player has collided with " + this.name + " (Type = " + type.ToString() + ")");
 		if (trig.gameObject.tag == "Player") {
 			switch (type) {
 			case objectType.collectable:
