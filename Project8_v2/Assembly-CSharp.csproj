@@ -75,11 +75,12 @@
      <Compile Include="Assets\Scripts\Old scripts\Player_Score.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\CutSceneManager.cs" />
-     <Compile Include="Assets\Scripts\PlatformInGame\EnemyClass.cs" />
-     <Compile Include="Assets\Scripts\PlatformInGame\EnemyNisse.cs" />
+     <Compile Include="Assets\Scripts\PlatformInGame\Enemy\EnemyClass.cs" />
+     <Compile Include="Assets\Scripts\PlatformInGame\Enemy\EnemyNisse.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\GameManagerPlatform.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\ObjectStats.cs" />
      <Compile Include="Assets\Scripts\PlatformInGame\PlayerControllerPlatform.cs" />
+     <Compile Include="Assets\Scripts\PlatformInGame\Projectiles\nisse_fireball.cs" />
      <Compile Include="Assets\Scripts\Title_menu_scrips\ButtonManager.cs" />
      <Compile Include="Assets\Scripts\Title_menu_scrips\LevelSelectButton.cs" />
      <Compile Include="Assets\Scripts\Title_menu_scrips\LevelSelectButtonManager.cs" />

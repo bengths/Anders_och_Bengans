@@ -32,6 +32,8 @@ public class PlayerControllerPlatform : MonoBehaviour {
     private bool doubleJumped;
     private bool trippleJumped;
 	private bool isPaused;
+    private bool isAttacking = false;
+    private bool underCooldown = false;
 
 	// Particles
 	public GameObject deathParticles;
@@ -48,7 +50,28 @@ public class PlayerControllerPlatform : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) OnPlayerPressPause();
-		if (!isPaused) playerMove(); 
+        if (!isPaused) {
+            playerAttack();
+            playerMove();
+        }
+    }
+
+    void playerAttack()
+    {
+        if (!underCooldown)
+        {
+            isAttacking = Input.GetKeyDown(KeyCode.LeftControl);
+            if (isAttacking) GetComponent<Animator>().SetTrigger("attack");
+            underCooldown = isAttacking;
+        }
+
+
+    }
+
+    void OnAttackOver()
+    {
+        isAttacking = false;
+        underCooldown = false;
     }
 
     void OnEnable()
@@ -147,7 +170,7 @@ public class PlayerControllerPlatform : MonoBehaviour {
 
         // Jump
         if (Input.GetButtonDown("Jump")) {
-            if (isGrounded)
+            if (isGrounded&&!underCooldown)
             {
                 jump();
                 GetComponent<Animator>().SetBool("isJumping", true);
@@ -167,7 +190,13 @@ public class PlayerControllerPlatform : MonoBehaviour {
         if(moveX != 0.0f) GetComponent<SpriteRenderer>().flipX = (moveX < 0.0f); // Direction
 
         // Kinematics
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        if (underCooldown) {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * 0.1f * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        } else
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        }
+
     }
 		
     void jump()

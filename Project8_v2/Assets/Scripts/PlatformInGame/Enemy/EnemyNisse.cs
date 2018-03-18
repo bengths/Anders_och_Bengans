@@ -16,9 +16,13 @@ public class EnemyNisse : EnemyClass {
     private float walkSpeed;
     private float attackDistance;
     private bool canAttack = true;
+    public GameObject damageTrigger;
 
-	// Use this for initialization
-	void Start () {
+    // Projectile
+    public GameObject projectileHorizontal;
+
+    // Use this for initialization
+    void Start () {
         state = nisseState.Walking;
         moveX = startDirection;
         setCharacterStats(enemyType);
@@ -26,6 +30,7 @@ public class EnemyNisse : EnemyClass {
 	
 	// Update is called once per frame
 	void Update () {
+
         if (state == nisseState.Walking)
             EnemyMove();
 
@@ -47,9 +52,9 @@ public class EnemyNisse : EnemyClass {
         switch (enemy)
         {
             case enemyCharacter.Nisse:
-                walkSpeed = 4.0f;
+                walkSpeed = 3.0f;
                 attackDistance = 10.0f;
-                attackCooldown = 10.0f;
+                attackCooldown = 3.0f;
                 break;
             case enemyCharacter.Olle:
                 walkSpeed = 11.0f;
@@ -69,15 +74,22 @@ public class EnemyNisse : EnemyClass {
 
     private void Event_NisseAttackOver()
     {
+        // Create projectile
+        GameObject missile = Instantiate(projectileHorizontal, this.transform.position, this.transform.rotation);
+        missile.GetComponent<nisse_fireball>().setHorz_dir(moveX);
+
+        // Update animation and reset state
         GetComponent<Animator>().SetBool("attack", false);
         this.state = nisseState.Walking;
+
+        // Cooldown timer for next attack
         Debug.Log("timer start");
         StartCoroutine("AttackCooldownCo");
     }
 
     IEnumerator AttackCooldownCo()
     {
-        yield return new WaitForSeconds((1.0f + Random.Range(0, attackCooldown)));
+        yield return new WaitForSeconds((0.3f + Random.Range(0, attackCooldown)));
         Debug.Log("timer done");
         canAttack = true;
     }
