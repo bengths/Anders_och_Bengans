@@ -14,6 +14,8 @@ public class EnemyNisse : EnemyClass {
     public enemyCharacter enemyType;
     private float moveX;
     private float walkSpeed;
+    private float attackDistance;
+    private bool canAttack = true;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,12 @@ public class EnemyNisse : EnemyClass {
         if (hit.distance < 3.0f)
             if (hit.collider.tag == "ground")
                 moveX *= -1;
+
+        // Check for player
+        if (hit.distance < this.attackDistance)
+            if (hit.collider.tag == "Player" && canAttack)
+                attack();
+
     }
 
     void setCharacterStats(enemyCharacter enemy)
@@ -40,6 +48,8 @@ public class EnemyNisse : EnemyClass {
         {
             case enemyCharacter.Nisse:
                 walkSpeed = 4.0f;
+                attackDistance = 10.0f;
+                attackCooldown = 10.0f;
                 break;
             case enemyCharacter.Olle:
                 walkSpeed = 11.0f;
@@ -50,7 +60,6 @@ public class EnemyNisse : EnemyClass {
     public void EnemyMove()
     {
         // Animations
-        Debug.Log((moveX!=0.0f));
         GetComponent<Animator>().SetBool("isWalking", (moveX != 0.0f)); // Idle/Walking
         if (moveX != 0.0f) GetComponent<SpriteRenderer>().flipX = (moveX > 0.0f); // Direction
 
@@ -58,10 +67,29 @@ public class EnemyNisse : EnemyClass {
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * walkSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
 
+    private void Event_NisseAttackOver()
+    {
+        GetComponent<Animator>().SetBool("attack", false);
+        this.state = nisseState.Walking;
+        Debug.Log("timer start");
+        StartCoroutine("AttackCooldownCo");
+    }
+
+    IEnumerator AttackCooldownCo()
+    {
+        yield return new WaitForSeconds((1.0f + Random.Range(0, attackCooldown)));
+        Debug.Log("timer done");
+        canAttack = true;
+    }
+
+
     // Override virtual functions
     public override void attack()
     {
-        ;
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        this.state = nisseState.Attack;
+        GetComponent<Animator>().SetBool("attack", true);
+        canAttack = false;
     }
 
     public override void death() {
