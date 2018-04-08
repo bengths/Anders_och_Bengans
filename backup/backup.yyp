@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "336643d9-774f-40f2-85cd-f56e6c331c5b",
+            "Value": {
+                "id": "01dfae7a-1a3a-4c4e-9619-18f76cdd2b2f",
+                "resourcePath": "sprites\\sprite16\\sprite16.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "3bbc9c9c-f472-47fa-b113-994348589dc4",
             "Value": {
                 "id": "97605685-3f15-4085-afa0-e0552d3a80ce",
@@ -155,14 +163,6 @@
             "Value": {
                 "id": "a4017cec-c5b8-45dc-a1a4-da3a914377a2",
                 "resourcePath": "sprites\\spr_Nisse_Angry\\spr_Nisse_Angry.yy",
-                "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "544a2d66-603c-4bfc-a676-e9fcf41434bd",
-            "Value": {
-                "id": "b694b138-5e04-4d05-82fb-8a1fdc2f3f25",
-                "resourcePath": "sprites\\spr_fireball\\spr_fireball.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -343,14 +343,6 @@
             }
         },
         {
-            "Key": "c61276fa-391a-4c5d-a6e0-5625f96d92e2",
-            "Value": {
-                "id": "c2f09eb1-fdb5-45a2-918e-c0aa06152127",
-                "resourcePath": "views\\c61276fa-391a-4c5d-a6e0-5625f96d92e2.yy",
-                "resourceType": "GMFolder"
-            }
-        },
-        {
             "Key": "cc98d028-7bdd-4680-85f3-c87a7baa481e",
             "Value": {
                 "id": "15f4292e-4c97-4cde-b5ff-7a76943b6238",
@@ -364,14 +356,6 @@
                 "id": "ed82d945-2b24-44f4-b047-ca55a1f7eed6",
                 "resourcePath": "views\\cd132d32-93ea-401f-a57c-16179a8803f5.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "d8db5030-2f33-4d24-90e6-dcc8ff89b6e9",
-            "Value": {
-                "id": "5a2a9d4e-1c3d-4445-920d-7a0aba0039e7",
-                "resourcePath": "sprites\\spr_fire_trail\\spr_fire_trail.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
