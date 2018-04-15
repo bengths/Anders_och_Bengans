@@ -6,15 +6,16 @@ public class LevelSelectButton : MonoBehaviour {
 
 	public GameObject namePanel;
 
+	void OnStart() {
+		namePanel.SetActive (false);
+	}
 
 
-	void OnMouseOver() {
-		Debug.Log ("Mouse on Button");
+	void OnMouseEnter() {
 		namePanel.SetActive (true);
 	}
 
 	void OnMouseExit() {
-		Debug.Log ("Mouse left Button");
 		namePanel.SetActive (false);
 	}
 

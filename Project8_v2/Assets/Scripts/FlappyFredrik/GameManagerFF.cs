@@ -61,6 +61,7 @@ public class GameManagerFF : MonoBehaviour {
 
 	void OnPlayerDied() {
 		gameOver = true;
+		soundtrack.pitch = 0.6f;
 		int savedScore = PlayerPrefs.GetInt ("HighScore");
 		if (score > savedScore) {
 			PlayerPrefs.SetInt ("HighScore", score);
@@ -71,6 +72,7 @@ public class GameManagerFF : MonoBehaviour {
 	void OnPlayerScored() {
 		score++;
 		scoreText.text = score.ToString();
+		soundtrack.pitch = soundtrack.pitch + 0.01f;
 	}
 
 
@@ -104,6 +106,7 @@ public class GameManagerFF : MonoBehaviour {
 		// activated when replay button is hit
 		OnGameOverConfirmed(); // event sent to PlayerController
 		scoreText.text = "0";
+		soundtrack.pitch = 1.0f;
 		SetPageState (PageState.Start);
 	}
 
