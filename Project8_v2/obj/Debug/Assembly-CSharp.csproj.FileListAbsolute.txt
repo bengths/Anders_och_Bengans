@@ -66,3 +66,5 @@ C:\Users\User\Desktop\Anders_och_Bengans\Project8_v2\obj\Debug\Assembly-CSharp.c
 C:\Users\User\Desktop\Anders_och_Bengans\Project8_v2\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Anders_och_Bengans\Project8_v2\obj\Debug\Assembly-CSharp.dll
 C:\Users\User\Desktop\Anders_och_Bengans\Project8_v2\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Marcus\Documents\GitHub\Anders_och_Bengans_spel\Project8_v2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Marcus\Documents\GitHub\Anders_och_Bengans_spel\Project8_v2\obj\Debug\Assembly-CSharp.dll

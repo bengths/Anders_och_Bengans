@@ -114,6 +114,9 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		isPaused = true;
 		//this.enabled = false;
 		this.GetComponent<Renderer>().enabled = false;
+		this.GetComponent<Rigidbody2D> ().gravityScale = 0.0f;
+		this.GetComponent<BoxCollider2D> ().enabled = false;
+
 	}
 
 	void RespawnPlayer () {
@@ -125,6 +128,8 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		this.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 		this.enabled = false;
 		this.GetComponent<Renderer>().enabled = false;
+		this.GetComponent<Rigidbody2D> ().gravityScale = 0.0f;
+		this.GetComponent<BoxCollider2D> ().enabled = false;
 
 		yield return new WaitForSeconds (game.respawnDelay);
 		Debug.Log ("Player respawn");
@@ -132,6 +137,9 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		Instantiate (spawnParticles, game.currentCheckpoint.transform.position, game.currentCheckpoint.transform.rotation);
 		this.enabled = true;
 		this.GetComponent<Renderer>().enabled = true;
+		this.GetComponent<BoxCollider2D> ().enabled = true;
+		this.GetComponent<Rigidbody2D> ().gravityScale = 2.0f;
+
 	}
 
 

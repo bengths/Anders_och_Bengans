@@ -2000,7 +2000,7 @@ MonoBehaviour:
   attackCooldown: 0
   startDirection: 1
   enemyType: 0
-  groundCheck: {fileID: 589031516}
+  damageTrigger: {fileID: 0}
   projectileHorizontal: {fileID: 1400003166004512, guid: fa32a773bd8ff9a44bc1a588a8581b93,
     type: 2}
 --- !u!50 &1343919924
@@ -3250,7 +3250,7 @@ GameObject:
   - component: {fileID: 2057732878}
   - component: {fileID: 2057732877}
   m_Layer: 0
-  m_Name: Opa_opa_finale
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -59,9 +59,12 @@ public class GameManagerPlatform : MonoBehaviour {
     public void pressResumeButton() {
         OnUnpauseGame();
         setGameState(GameState.Playing);
+		Time.timeScale = 1;
     }
 
 	public void pressReplayButton()	{
+		Time.timeScale = 1;
+		soundtrack.pitch = 1.0f;
 		SceneManager.LoadScene ("Demo_Scene");
 		setGameState (GameState.Playing);
 	}
@@ -89,10 +92,14 @@ public class GameManagerPlatform : MonoBehaviour {
 			Debug.Log ("Player has run out of HP!");
 			lives--;
 			setLifeText ();
-			if (lives == 0) {
+			if (lives <= 0) {
 				setGameState (GameState.GameOver);
 				setCheckpoint (startingCheckpoint);
 				OnGameOver ();	// Send event
+				soundtrack.pitch = 0.7f;
+				lives = 0;
+				setLifeText ();
+				Time.timeScale = 0.1f;
 			} else {
 				OnPlayerDied ();
 				health = maxHealth;
@@ -106,16 +113,16 @@ public class GameManagerPlatform : MonoBehaviour {
 		if (gameState == GameState.Playing) {
 			OnPauseGame();
 			setGameState(GameState.Paused);
+			Time.timeScale = 0;
 			return;
 		}
 		// Unpause game
 		if (gameState == GameState.Paused) {
-			OnUnpauseGame();
-			setGameState(GameState.Playing);
+			OnUnpauseGame ();
+			setGameState (GameState.Playing);
+			Time.timeScale = 1;
 		}
 	}
-
-
 
 
     // Private functions
@@ -128,7 +135,13 @@ public class GameManagerPlatform : MonoBehaviour {
     }
 
     void OnCreate() {
-        soundtrack.Play();
+        // Initiate
+		Time.timeScale = 1.0f;
+		soundtrack.Play();
+		setHealthText ();
+		setLifeText ();
+		setScoreText ();
+
     }
 
 	void OnEnable() {
