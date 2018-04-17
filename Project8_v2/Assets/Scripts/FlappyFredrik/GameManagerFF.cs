@@ -61,7 +61,7 @@ public class GameManagerFF : MonoBehaviour {
 
 	void OnPlayerDied() {
 		gameOver = true;
-		soundtrack.pitch = 0.6f;
+		soundtrack.pitch = -0.6f;
 		int savedScore = PlayerPrefs.GetInt ("HighScore");
 		if (score > savedScore) {
 			PlayerPrefs.SetInt ("HighScore", score);

@@ -308,8 +308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1717167402995736, guid: ec5453371acf9884e83fe27b92ed012d, type: 2}
   poolSize: 4
-  shiftSpeed: 0.1
-  spawnRate: 150
+  defaultShiftSpeed: 0.1
+  defaultSpawnRate: 150
   ySpawnRange:
     min: 0.5
     max: 0.5
@@ -517,8 +517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1384717267101164, guid: 5099798f4912fbd4ea8d9a8ae73202bc, type: 2}
   poolSize: 4
-  shiftSpeed: 0.25
-  spawnRate: 67
+  defaultShiftSpeed: 0.15
+  defaultSpawnRate: 67
   ySpawnRange:
     min: 0.5
     max: 0.5
@@ -2067,8 +2067,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1886167998472734, guid: 8df29ba0c3fb46b4f9003e8ad1682b91, type: 2}
   poolSize: 15
-  shiftSpeed: 1
-  spawnRate: 4
+  defaultShiftSpeed: 1
+  defaultSpawnRate: 4
   ySpawnRange:
     min: -1.7
     max: 2.7

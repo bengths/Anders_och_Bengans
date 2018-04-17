@@ -21,8 +21,12 @@ public class Paralaxer : MonoBehaviour {
 
 	public GameObject Prefab;
 	public int poolSize;
-	public float shiftSpeed;
-	public float spawnRate;
+	public float defaultShiftSpeed;
+	public float defaultSpawnRate;
+
+	private float spawnRate;
+	private float shiftSpeed;
+
 
 	public YSpawnRange ySpawnRange;
 	public Vector3 defaultSpawnPos;
@@ -41,15 +45,19 @@ public class Paralaxer : MonoBehaviour {
 
 	void Start() {
 		game = GameManagerFF.Instance;
+		shiftSpeed = defaultShiftSpeed;
+		spawnRate = defaultSpawnRate;
 	}
 
 	void OnEnable() {
 		GameManagerFF.OnGameOverConfirmed += OnGameOverConfirmed;
+		PlayerController.OnPlayerScored += OnPlayerScored;
 	}
 		
 
 	void OnDisable() {
 		GameManagerFF.OnGameOverConfirmed -= OnGameOverConfirmed;
+		PlayerController.OnPlayerScored -= OnPlayerScored;
 	}
 
 	void OnGameOverConfirmed () {
@@ -60,8 +68,16 @@ public class Paralaxer : MonoBehaviour {
 		if (spawnImmediate) {
 			SpawnImmediate ();
 		}
+		// Reset shift speed and spawn rate
+		shiftSpeed = defaultShiftSpeed;
+		spawnRate = defaultSpawnRate;
 	}
 
+	void OnPlayerScored ()
+	{
+		shiftSpeed = shiftSpeed * 1.01f;
+		spawnRate = spawnRate * 0.99f;
+	}
 
 	void Update() {
 		if (game.GameOver)
