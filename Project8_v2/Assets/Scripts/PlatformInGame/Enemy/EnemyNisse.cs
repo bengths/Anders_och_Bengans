@@ -18,6 +18,10 @@ public class EnemyNisse : EnemyClass {
     private bool canAttack = true;
     public GameObject damageTrigger;
 
+	private int healthPoints;
+	// Particles
+	public GameObject deathParticles;
+
     // Projectile
     public GameObject projectileHorizontal;
 
@@ -27,7 +31,31 @@ public class EnemyNisse : EnemyClass {
         moveX = startDirection;
         setCharacterStats(enemyType);
 	}
-	
+
+	// Register listeners
+	void OnEnable()
+	{
+		PlayerControllerPlatform.OnPlayerAttack += OnPlayerAttack;
+	}
+
+
+	void OnDisable()
+	{
+		PlayerControllerPlatform.OnPlayerAttack -= OnPlayerAttack;
+	}
+
+
+	void OnPlayerAttack(float atkRange, int atkPoints){
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(moveX, 0));
+		// Enemy is within range for the Player
+		if ((hit.distance < atkRange) && (hit.collider.tag == "Player")) {
+			enemyHurt (atkPoints);
+			Debug.Log ("Enemy HP = " + this.healthPoints.ToString());
+		}
+			
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 
@@ -51,10 +79,11 @@ public class EnemyNisse : EnemyClass {
     {
         switch (enemy)
         {
-            case enemyCharacter.Nisse:
-                walkSpeed = 3.0f;
-                attackDistance = 10.0f;
-                attackCooldown = 3.0f;
+			case enemyCharacter.Nisse:
+				walkSpeed = 3.0f;
+				attackDistance = 10.0f;
+				attackCooldown = 3.0f;
+				healthPoints = 30;
                 break;
             case enemyCharacter.Olle:
                 walkSpeed = 11.0f;
@@ -71,6 +100,14 @@ public class EnemyNisse : EnemyClass {
         // Kinematics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * walkSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
     }
+
+	// Enemy Health Management
+	private void enemyHurt(int atkPoints) {
+		healthPoints -= atkPoints;
+		if (healthPoints <= 0)
+			death ();
+	}
+
 
     private void Event_NisseAttackOver()
     {
@@ -105,6 +142,18 @@ public class EnemyNisse : EnemyClass {
     }
 
     public override void death() {
-        ;
+		canAttack = false;	// Enemy can't attack anymore
+		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0); // Enemy stops moving
+		gameObject.GetComponentInChildren<ObjectStats>().enabled = false; // Enemy touch won't hurt player anymore
+		GetComponent<Animator> ().SetBool ("isDying", true);
+		StartCoroutine("waitForDeathAnimationCo");
     }
+
+	IEnumerator waitForDeathAnimationCo()
+	{
+		yield return new WaitForSeconds(4.0f);
+		Destroy (this.gameObject);
+		Instantiate (deathParticles, this.transform.position, this.transform.rotation);
+
+	}
 }

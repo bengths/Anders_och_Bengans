@@ -128,6 +128,7 @@ public class GameManagerPlatform : MonoBehaviour {
     // Private functions
 	void Start() {
 		setCheckpoint(startingCheckpoint);
+		Time.timeScale = 1;
 	}
 
     void Awake() {

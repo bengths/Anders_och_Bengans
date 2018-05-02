@@ -9,9 +9,11 @@ public class PlayerControllerPlatform : MonoBehaviour {
 
     // Delegates
     public delegate void PlayerDelegate();
+	public delegate void PlayerDelegateInt(float a,int b);
 
     public static event PlayerDelegate OnPlayerDeath;
     public static event PlayerDelegate OnPlayerPressPause;
+	public static event PlayerDelegateInt OnPlayerAttack;
 
     // Characters
     public enum playerCharacter{Anders, Anton, Dick, Johan, Jonas, Magnus, Marcus };
@@ -22,6 +24,8 @@ public class PlayerControllerPlatform : MonoBehaviour {
     private float playerJumpHeight = 6.0f;
     private bool canDoubleJump = false;
     private bool canTrippleJump = false;
+	private float playerAttackRange = 5.0f;
+	private int playerAttackPoints = 1;
 
     // Movement variables
     private float moveX;
@@ -61,8 +65,11 @@ public class PlayerControllerPlatform : MonoBehaviour {
         if (!underCooldown)
         {
             isAttacking = Input.GetKeyDown(KeyCode.LeftControl);
-            if (isAttacking) GetComponent<Animator>().SetTrigger("attack");
-            underCooldown = isAttacking;
+			underCooldown = isAttacking;
+			if (isAttacking) {
+				GetComponent<Animator>().SetTrigger("attack");
+	            OnPlayerAttack (playerAttackRange,playerAttackPoints); 	// Send Attack event
+			}
         }
 
 
@@ -148,14 +155,18 @@ public class PlayerControllerPlatform : MonoBehaviour {
     {
         switch(hero)
         {
-            case playerCharacter.Dick:
-                playerJumpHeight = 6;
-                playerSpeed = 7;
-                canDoubleJump = true;
+			case playerCharacter.Dick:
+				playerJumpHeight = 6;
+				playerSpeed = 7;
+				canDoubleJump = true;
+				playerAttackRange = 0.0f;
+				playerAttackPoints = 1;
                 break;
             case playerCharacter.Magnus:
                 playerJumpHeight = 10;
                 playerSpeed = 8;
+				playerAttackRange = 5.0f;
+				playerAttackPoints = 10;
                 break;
         }
     }

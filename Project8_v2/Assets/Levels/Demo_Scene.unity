@@ -2001,6 +2001,8 @@ MonoBehaviour:
   startDirection: 1
   enemyType: 0
   damageTrigger: {fileID: 0}
+  deathParticles: {fileID: 1026745506790714, guid: ae7aa594495e0e843b806e3a000f47c6,
+    type: 2}
   projectileHorizontal: {fileID: 1400003166004512, guid: fa32a773bd8ff9a44bc1a588a8581b93,
     type: 2}
 --- !u!50 &1343919924
