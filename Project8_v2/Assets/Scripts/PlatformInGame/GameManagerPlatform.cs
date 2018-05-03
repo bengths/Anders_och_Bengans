@@ -65,7 +65,7 @@ public class GameManagerPlatform : MonoBehaviour {
 	public void pressReplayButton()	{
 		Time.timeScale = 1;
 		soundtrack.pitch = 1.0f;
-		SceneManager.LoadScene ("Demo_Scene");
+		SceneManager.LoadScene ("Demo_Scene");		// Must be dynamic, load current scene instead!!!
 		setGameState (GameState.Playing);
 	}
 
