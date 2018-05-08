@@ -239,6 +239,14 @@
             }
         },
         {
+            "Key": "84f6d8d7-ecaf-4ad3-838d-4a869d2b8485",
+            "Value": {
+                "id": "e9f6e61d-bad3-411b-b8ea-643baefe55bb",
+                "resourcePath": "sprites\\spr_Jonas\\spr_Jonas.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "8cc15b3b-9d48-4164-8180-b03965586eeb",
             "Value": {
                 "id": "377e115a-6a26-4b70-8fd6-6070f23008c4",
