@@ -11,6 +11,7 @@ TagManager:
   - Spikes
   - DeadZone
   - ScoreZone
+  - PlayerAttackTrigger
   layers:
   - Default
   - TransparentFX

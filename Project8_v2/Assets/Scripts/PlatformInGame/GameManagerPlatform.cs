@@ -154,6 +154,7 @@ public class GameManagerPlatform : MonoBehaviour {
 		ObjectStats.OnPlayerScored += OnPlayerScored;
 		Checkpoint.setCheckpoint += setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
+		//PlayerControllerPlatform.OnPlayerAttack += OnPlayerAttack;
 	}
 
 	void OnDisable() {
@@ -165,6 +166,7 @@ public class GameManagerPlatform : MonoBehaviour {
 		ObjectStats.OnPlayerScored -= OnPlayerScored;
 		Checkpoint.setCheckpoint -= setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
+		//PlayerControllerPlatform.OnPlayerAttack -= OnPlayerAttack;
 	}
 
     void setAllStatesFalseUI() {
@@ -222,5 +224,10 @@ public class GameManagerPlatform : MonoBehaviour {
 		textLives.text = "Lives: x" + lives.ToString ();
 	}
 
+	//void OnPlayerAttack (float a, int b)
+	//{
+		// The event sent from PlayerControllerPlatform requires a listener.
+		// This is a dummy listener
+	//}
 
 }

@@ -21,9 +21,12 @@ public class ObjectStats : MonoBehaviour {
 	public int healPoints;
 	public int hurtPoints;
 
+	//public AudioSource objectSound;
+
 	void OnTriggerEnter2D (Collider2D trig)
 	{
 		if (trig.gameObject.tag == "Player") {
+			//objectSound.Play ();
 			switch (type) {
 			case objectType.collectable:
 				OnPlayerScored (score);

@@ -22,6 +22,9 @@ public class EnemyNisse : EnemyClass {
 	// Particles
 	public GameObject deathParticles;
 
+	// Audio
+	public AudioSource hitSound;
+
     // Projectile
     public GameObject projectileHorizontal;
 
@@ -33,6 +36,7 @@ public class EnemyNisse : EnemyClass {
 	}
 
 	// Register listeners
+	/*
 	void OnEnable()
 	{
 		PlayerControllerPlatform.OnPlayerAttack += OnPlayerAttack;
@@ -43,8 +47,8 @@ public class EnemyNisse : EnemyClass {
 	{
 		PlayerControllerPlatform.OnPlayerAttack -= OnPlayerAttack;
 	}
-
-
+*/
+	/*
 	void OnPlayerAttack(float atkRange, int atkPoints){
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(moveX, 0));
 		// Enemy is within range for the Player
@@ -52,9 +56,10 @@ public class EnemyNisse : EnemyClass {
 			enemyHurt (atkPoints);
 			Debug.Log ("Enemy HP = " + this.healthPoints.ToString());
 		}
+
 			
 	}
-
+	*/
 
 	// Update is called once per frame
 	void Update () {
@@ -72,7 +77,6 @@ public class EnemyNisse : EnemyClass {
         if (hit.distance < this.attackDistance)
             if (hit.collider.tag == "Player" && canAttack)
                 attack();
-
     }
 
     void setCharacterStats(enemyCharacter enemy)
@@ -102,8 +106,16 @@ public class EnemyNisse : EnemyClass {
     }
 
 	// Enemy Health Management
+
+	private void OnTriggerEnter2D(Collider2D col) {
+		if (col.gameObject.tag == "PlayerAttackTrigger") {
+			enemyHurt(col.gameObject.GetComponent<attackTrigger>().getAttackPoints());
+		}
+	}
+
 	private void enemyHurt(int atkPoints) {
 		healthPoints -= atkPoints;
+		hitSound.Play ();
 		if (healthPoints <= 0)
 			death ();
 	}
@@ -142,8 +154,9 @@ public class EnemyNisse : EnemyClass {
     }
 
     public override void death() {
+		this.state = nisseState.Dying;
 		canAttack = false;	// Enemy can't attack anymore
-		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0); // Enemy stops moving
+		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f, 0.0f); // Enemy stops moving
 		gameObject.GetComponentInChildren<ObjectStats>().enabled = false; // Enemy touch won't hurt player anymore
 		GetComponent<Animator> ().SetBool ("isDying", true);
 		StartCoroutine("waitForDeathAnimationCo");
