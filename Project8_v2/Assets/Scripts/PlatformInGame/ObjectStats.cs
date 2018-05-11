@@ -6,11 +6,12 @@ public class ObjectStats : MonoBehaviour {
 
 	// Delegates
 	public delegate void ObjectDelegateInt(int a);
+	public delegate void ObjectDelegate ();
 
 	public static event ObjectDelegateInt OnPlayerScored;
 	public static event ObjectDelegateInt OnPlayerHurt;
 	public static event ObjectDelegateInt OnPlayerHeal;
-
+	public static event ObjectDelegate OnPlayerExtraLife;
 
 
 	// Available object types
@@ -33,10 +34,12 @@ public class ObjectStats : MonoBehaviour {
 				Destroy (this.gameObject);
 				break;
 			case objectType.extraLife:
-				Debug.Log ("Player gained an extra life!");
+				OnPlayerExtraLife ();
+				Destroy (this.gameObject);
 				break;
 			case objectType.healing:
 				OnPlayerHeal (healPoints);
+				Destroy (this.gameObject);
 				break;
 			case objectType.hurting:
 				OnPlayerHurt (hurtPoints);

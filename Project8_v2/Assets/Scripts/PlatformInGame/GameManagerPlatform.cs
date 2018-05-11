@@ -42,7 +42,14 @@ public class GameManagerPlatform : MonoBehaviour {
 	public GameObject startingCheckpoint;
 	public GameObject currentCheckpoint;
 
+	// Audio
 	public AudioSource soundtrack;
+	public AudioSource scoreSound;
+	public AudioSource hurtSound;
+	public AudioSource extraLifeSound;
+	public AudioSource healSound;
+	public AudioSource deathSound;
+
 
     // Public functions
     public int getScore() {
@@ -71,11 +78,13 @@ public class GameManagerPlatform : MonoBehaviour {
 
 
 	void OnPlayerScored(int a) {
+		scoreSound.Play ();
 		score += a;
 		setScoreText ();
 	}
 
 	void OnPlayerHeal(int a) {
+		healSound.Play ();
 		if (health + a < maxHealth) {
 			health += a;
 		} else {
@@ -86,8 +95,10 @@ public class GameManagerPlatform : MonoBehaviour {
 
 	void OnPlayerHurt(int a) {
 		if (health - a > 0) {
+			hurtSound.Play ();
 			health -= a;
 		} else {
+			deathSound.Play ();
 			health = 0;
 			Debug.Log ("Player has run out of HP!");
 			lives--;
@@ -106,6 +117,12 @@ public class GameManagerPlatform : MonoBehaviour {
 			}
 		}
 		setHealthText ();
+	}
+
+	void OnPlayerExtraLife() {
+		extraLifeSound.Play ();
+		lives++;
+		setLifeText ();
 	}
 		
 	void OnPlayerPressPause() {
@@ -152,6 +169,7 @@ public class GameManagerPlatform : MonoBehaviour {
 		ObjectStats.OnPlayerHeal += OnPlayerHeal;
 		ObjectStats.OnPlayerHurt += OnPlayerHurt;
 		ObjectStats.OnPlayerScored += OnPlayerScored;
+		ObjectStats.OnPlayerExtraLife += OnPlayerExtraLife;
 		Checkpoint.setCheckpoint += setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause += OnPlayerPressPause;
 		//PlayerControllerPlatform.OnPlayerAttack += OnPlayerAttack;
@@ -164,6 +182,7 @@ public class GameManagerPlatform : MonoBehaviour {
 		ObjectStats.OnPlayerHeal -= OnPlayerHeal;
 		ObjectStats.OnPlayerHurt -= OnPlayerHurt;
 		ObjectStats.OnPlayerScored -= OnPlayerScored;
+		ObjectStats.OnPlayerExtraLife -= OnPlayerExtraLife;
 		Checkpoint.setCheckpoint -= setCheckpoint;
 		PlayerControllerPlatform.OnPlayerPressPause -= OnPlayerPressPause;
 		//PlayerControllerPlatform.OnPlayerAttack -= OnPlayerAttack;
