@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Boss_Battle.unity
+- path: Assets/Levels/Level_Select.unity
   isLoaded: 1
   isActive: 1
