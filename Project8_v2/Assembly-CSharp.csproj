@@ -55,6 +55,7 @@
      <Compile Include="Assets\bulletScript.cs" />
      <Compile Include="Assets\Levels\CutScenes\Intro\CutsceneDialogue.cs" />
      <Compile Include="Assets\Levels\CutScenes\Intro\ScrollingBackground.cs" />
+     <Compile Include="Assets\PlayerSelectScript.cs" />
      <Compile Include="Assets\scoreText.cs" />
      <Compile Include="Assets\Scripts\FlappyFredrik\CountDownText.cs" />
      <Compile Include="Assets\Scripts\FlappyFredrik\GameManagerFF.cs" />
