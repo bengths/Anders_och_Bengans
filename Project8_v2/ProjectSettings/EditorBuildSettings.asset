@@ -23,3 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Test_Scene.unity
     guid: 872a096a4d9c7d4469ab24d76a2cd4ec
+  - enabled: 1
+    path: Assets/Levels/Boss_Battle.unity
+    guid: 8d190912356eab1418bd4db9204aa6a3
+  m_configObjects: {}

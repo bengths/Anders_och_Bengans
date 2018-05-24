@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour {
 
-	public GameObject namePanel;
+    // Level Select Button Delegates
+    public delegate void LevelSelectButtonDelegate(string str, string strr);
+    public static event LevelSelectButtonDelegate OnClickedButton;
+    public GameObject namePanel;
+    public Text levelName;
+    public Text sceneName;
 
 	void OnStart() {
 		namePanel.SetActive (false);
@@ -19,5 +26,9 @@ public class LevelSelectButton : MonoBehaviour {
 		namePanel.SetActive (false);
 	}
 
+    public void UpdateLevelName()
+    {
+        OnClickedButton(levelName.text,sceneName.text);    // Send event with the level name
+    }
 
 }

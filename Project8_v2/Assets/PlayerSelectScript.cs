@@ -16,6 +16,8 @@ public class PlayerSelectScript : MonoBehaviour {
 	public GameObject ProfileDick;
 
 	public Text caption;
+    public Text levelName;
+    private string sceneName;
 
 	private int characterNbr;
 
@@ -28,7 +30,24 @@ public class PlayerSelectScript : MonoBehaviour {
 		UpdateProfile ();
 	}
 
-	public void OnLeftSwipe() {
+    void OnEnable()
+    {
+        LevelSelectButton.OnClickedButton += OnClickedButton;
+    }
+
+    void OnDisable()
+    {
+        LevelSelectButton.OnClickedButton -= OnClickedButton;
+    }
+
+    void OnClickedButton(string level, string scene)
+    {
+        levelName.text = "Level: " + level;
+        sceneName = scene;
+        PlayerPrefs.SetString("CurrentLevel", level);
+    }
+
+    public void OnLeftSwipe() {
 		// Decrement character number
 		characterNbr--;
 		if (characterNbr < 1)
@@ -50,11 +69,16 @@ public class PlayerSelectScript : MonoBehaviour {
 		// Update UI
 	}
 
+    public void OnConfirmPlay()
+    {
+        LevelSelectButtonManager.LoadScene(sceneName);
+    }
+
 	void UpdateProfile() {
 		switch (characterNbr) {
 		case 1:
 			caption.text = "Magnus";
-			ProfileMagnus.SetActive (true);
+            ProfileMagnus.SetActive (true);
 			ProfileAnders.SetActive (false);
 			ProfileAnton.SetActive (false);
 			ProfileJohan.SetActive (false);
@@ -64,7 +88,7 @@ public class PlayerSelectScript : MonoBehaviour {
 			break;
 		case 2:
 			caption.text = "Anders";
-			ProfileMagnus.SetActive (false);
+            ProfileMagnus.SetActive (false);
 			ProfileAnders.SetActive (true);
 			ProfileAnton.SetActive (false);
 			ProfileJohan.SetActive (false);
@@ -124,5 +148,7 @@ public class PlayerSelectScript : MonoBehaviour {
 			break;
 		}
 
-	}
+        PlayerPrefs.SetString("Character",caption.text);
+
+    }
 }

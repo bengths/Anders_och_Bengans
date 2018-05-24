@@ -29,6 +29,7 @@ public class GameManagerPlatform : MonoBehaviour {
     public Text textScore;
 	public Text textHealth;
 	public Text textLives;
+    public Text textLevel;
 
 
 	// Settings
@@ -59,8 +60,6 @@ public class GameManagerPlatform : MonoBehaviour {
     public bool isGameOver() {
         return gameState == GameState.GameOver;
     }
-
-
 
 	// Button functions and onEvent functions
     public void pressResumeButton() {
@@ -146,7 +145,8 @@ public class GameManagerPlatform : MonoBehaviour {
 	void Start() {
 		setCheckpoint(startingCheckpoint);
 		Time.timeScale = 1;
-	}
+        textLevel.text = PlayerPrefs.GetString("CurrentLevel");
+    }
 
     void Awake() {
         instance = this;

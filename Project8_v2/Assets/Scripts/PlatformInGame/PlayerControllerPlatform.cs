@@ -63,7 +63,7 @@ public class PlayerControllerPlatform : MonoBehaviour {
     void Start()
     {
         game = GameManagerPlatform.instance;
-        setCharacterStats(character);
+        setCharacterStats(PlayerPrefs.GetString("Character"));
 		isPaused = false;
 		attackTrigger.GetComponent<BoxCollider2D> ().enabled = false;
 		circleAttackTrigger.SetActive (false);
@@ -140,7 +140,37 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		this.GetComponent<Rigidbody2D> ().gravityScale = 2.0f;
 
 	}
-		
+	
+    void setCharacterStats(string hero)
+    {
+        switch(hero)
+        {
+            case "Magnus":
+                character = playerCharacter.Magnus;
+                break;
+            case "Anders":
+                character = playerCharacter.Anders;
+                break;
+            case "Anton":
+                character = playerCharacter.Anton;
+                break;
+            case "Johan":
+                character = playerCharacter.Johan;
+                break;
+            case "Jonas":
+                character = playerCharacter.Jonas;
+                break;
+            case "Marcus":
+                character = playerCharacter.Marcus;
+                break;
+            case "Dick":
+                character = playerCharacter.Dick;
+                break;
+        }
+        setCharacterStats(character);
+    }
+
+
 	void setCharacterStats(playerCharacter hero)
 	{
 		switch(hero)
