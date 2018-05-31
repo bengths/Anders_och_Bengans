@@ -64,6 +64,7 @@
     <Compile Include="Assets\Levels\CutScenes\Intro\CutsceneDialogue.cs" />
     <Compile Include="Assets\Levels\CutScenes\Intro\ScrollingBackground.cs" />
     <Compile Include="Assets\PlayerSelectScript.cs" />
+    <Compile Include="Assets\Portal.cs" />
     <Compile Include="Assets\scoreText.cs" />
     <Compile Include="Assets\Scripts\FlappyFredrik\CountDownText.cs" />
     <Compile Include="Assets\Scripts\FlappyFredrik\GameManagerFF.cs" />
@@ -101,11 +102,11 @@
     <Compile Include="Assets\WorldMapCursor.cs" />
     <None Include="Assets\Sprites\Platform\public-license.txt" />
     <None Include="Assets\Levels\CutScenes\Intro\OpeningCutScene.txt" />
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Marcus/Documents/GitHub/Anders_och_Bengans_spel/Project8_v2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Marcus/Documents/GitHub/Anders_och_Bengans_spel/Project8_v2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>C:/Users/Marcus/Documents/GitHub/Anders_och_Bengans_spel/Project8_v2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

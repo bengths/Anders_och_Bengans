@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyNisse : EnemyClass {
 
     public float startDirection = 1;
-    public enum enemyCharacter {Nisse, Olle};
+    public enum enemyCharacter {Nisse, Olle, Bamse};
     private enum nisseState {Idle, Walking, Attack, Dying};
     private nisseState state;
     public enemyCharacter enemyType;
@@ -16,6 +16,7 @@ public class EnemyNisse : EnemyClass {
     private float walkSpeed;
     private float attackDistance;
     private bool canAttack = true;
+    private bool onJumpCooldown = false;
     public GameObject damageTrigger;
 
 	private int healthPoints;
@@ -76,6 +77,12 @@ public class EnemyNisse : EnemyClass {
 				attackCooldown = 5.0f;
 				healthPoints = 40;
 				break;
+            case enemyCharacter.Bamse:
+                walkSpeed = 5.0f;
+                attackDistance = 10.0f;
+                attackCooldown = 4.0f;
+                healthPoints = 500;
+                break;
         }
     }
 
@@ -83,10 +90,40 @@ public class EnemyNisse : EnemyClass {
     {
         // Animations
         GetComponent<Animator>().SetBool("isWalking", (moveX != 0.0f)); // Idle/Walking
-        if (moveX != 0.0f) GetComponent<SpriteRenderer>().flipX = (moveX > 0.0f); // Direction
+        if (moveX != 0.0f)
+        {
+            if (enemyType == enemyCharacter.Bamse)
+            {
+                GetComponent<SpriteRenderer>().flipX = (moveX < 0.0f); // Direction
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().flipX = (moveX > 0.0f); // Direction
+            }
+        }
 
         // Kinematics
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * walkSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+        if(enemyType == enemyCharacter.Bamse)
+        {
+            if (!onJumpCooldown)
+                Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        Debug.Log("Jump");
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100.0f));
+        onJumpCooldown = true;
+        StartCoroutine("WaitForJumpCooldown");
+    }
+
+    IEnumerator WaitForJumpCooldown()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 2.0f));
+        onJumpCooldown = false;
     }
 
 	// Enemy Health Management
