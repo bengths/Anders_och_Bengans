@@ -69,6 +69,7 @@ public class PlayerControllerPlatform : MonoBehaviour {
 		circleAttackTrigger.SetActive (false);
 		forceFieldSound.Play ();
 		forceFieldSound.Pause ();
+        PlayerPrefs.SetInt("PedoBamseIsDefeated", 0);
 
     }
 

@@ -665,6 +665,7 @@ MonoBehaviour:
   startDirection: 1
   enemyType: 1
   damageTrigger: {fileID: 1406871389715446}
+  healthBar: {fileID: 0}
   deathParticles: {fileID: 1026745506790714, guid: ae7aa594495e0e843b806e3a000f47c6,
     type: 2}
   hitSound: {fileID: 82989185833686786}

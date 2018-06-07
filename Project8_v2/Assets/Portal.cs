@@ -11,7 +11,7 @@ public class Portal : MonoBehaviour
 
     public bool enterBossRoom;
     public AudioSource bossTheme;
-
+    public AudioSource laughter;
 
     private void Start()
     {
@@ -30,6 +30,11 @@ public class Portal : MonoBehaviour
                 GameManagerPlatform game = FindObjectOfType<GameManagerPlatform>();
                 game.soundtrack.Pause();
                 bossTheme.Play();
+                laughter.Play();
+
+                game.GetComponent<CameraSystem>().enabled = false;
+                game.GetComponent<Transform>().position = new Vector3(152.1f, 31.4f, -10.0f);
+                game.GetComponent<Camera>().orthographicSize = 8.9f;
                 // Spawn boss
             }
         }

@@ -30,10 +30,10 @@ public class GameManagerPlatform : MonoBehaviour {
 	public Text textHealth;
 	public Text textLives;
     public Text textLevel;
+    public GameObject healthBar;
 
-
-	// Settings
-	public int respawnDelay = 2;
+    // Settings
+    public int respawnDelay = 2;
 
     // Variables
     int score = 0;
@@ -236,6 +236,7 @@ public class GameManagerPlatform : MonoBehaviour {
 	}
 
 	void setHealthText () {
+        healthBar.GetComponent<HealthBar>().UpdateHealthBar(health, maxHealth);
 		textHealth.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
 	}
 

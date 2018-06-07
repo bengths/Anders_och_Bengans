@@ -19,9 +19,13 @@ public class EnemyNisse : EnemyClass {
     private bool onJumpCooldown = false;
     public GameObject damageTrigger;
 
-	private int healthPoints;
-	// Particles
-	public GameObject deathParticles;
+    public GameObject healthBar;
+
+    private bool showHealthBar;
+    private int healthPoints;
+    private int maxHP;
+    // Particles
+    public GameObject deathParticles;
 
 	// Audio
 	public AudioSource hitSound;
@@ -36,6 +40,7 @@ public class EnemyNisse : EnemyClass {
         state = nisseState.Walking;
         moveX = startDirection;
         setCharacterStats(enemyType);
+        maxHP = healthPoints;
 	}
 
 	// Update is called once per frame
@@ -70,20 +75,39 @@ public class EnemyNisse : EnemyClass {
 				attackDistance = 10.0f;
 				attackCooldown = 3.0f;
 				healthPoints = 30;
+                showHealthBar = false;
                 break;
             case enemyCharacter.Olle:
 				walkSpeed = 5.0f;
 				attackDistance = 10.0f;
 				attackCooldown = 5.0f;
 				healthPoints = 40;
-				break;
+                showHealthBar = false;
+                break;
             case enemyCharacter.Bamse:
                 walkSpeed = 5.0f;
                 attackDistance = 10.0f;
                 attackCooldown = 4.0f;
                 healthPoints = 500;
+                showHealthBar = true;
                 break;
         }
+
+        if (!showHealthBar)
+        {
+            healthBar.SetActive(false);
+        }
+
+    }
+
+    public int getHealthPoints()
+    {
+        return healthPoints;
+    }
+
+    public int getMaxHealthPoints()
+    {
+        return maxHP;
     }
 
     public void EnemyMove()
@@ -136,12 +160,17 @@ public class EnemyNisse : EnemyClass {
 
 	private void enemyHurt(int atkPoints) {
 		healthPoints -= atkPoints;
-		Debug.Log ("Nisse HP = " + healthPoints);
+        Debug.Log ("Nisse HP = " + healthPoints);
 		hitSound.Play ();
-		if (healthPoints <= 0) {
-			death ();
+        if (healthPoints <= 0) {
+            healthPoints = 0;
+            death ();
 		}
-	}
+        if (showHealthBar)
+        {
+            healthBar.GetComponent<HealthBar>().UpdateHealthBar(healthPoints, maxHP);
+        }
+    }
 
 
     private void Event_NisseAttackOver()
@@ -178,6 +207,11 @@ public class EnemyNisse : EnemyClass {
 
     public override void death() {
 		this.state = nisseState.Dying;
+        if (enemyType == enemyCharacter.Bamse)
+        {
+            healthBar.GetComponent<HealthBar>().UpdateHealthBar(healthPoints, maxHP);
+            PlayerPrefs.SetInt("PedoBamseIsDefeated",1);
+        }
 		woofSound.Play ();
 		canAttack = false;	// Enemy can't attack anymore
 		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0.0f, 0.0f); // Enemy stops moving
@@ -185,20 +219,23 @@ public class EnemyNisse : EnemyClass {
 		//gameObject.GetComponentInChildren<ObjectStats>().enabled = false; // Enemy touch won't hurt player anymore
 		GetComponent<Animator> ().SetBool ("isDying", true);
 		StartCoroutine("waitForDeathAnimationCo");
+        
+
     }
 
 	IEnumerator waitForDeathAnimationCo()
 	{
-		yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(4.0f);
 		popSound.Play ();
 		GetComponent<SpriteRenderer> ().enabled = false;
 		GetComponent<BoxCollider2D> ().isTrigger = true;
 		Instantiate (deathParticles, this.transform.position, this.transform.rotation);
 
 	}
-
+/*
 	IEnumerator waitToDestroy(){
 		yield return new WaitForSeconds (2.0f);
 		Destroy (this.gameObject);
 	}
+    */
 }

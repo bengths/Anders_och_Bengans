@@ -63,6 +63,7 @@
     <Compile Include="Assets\bulletScript.cs" />
     <Compile Include="Assets\Levels\CutScenes\Intro\CutsceneDialogue.cs" />
     <Compile Include="Assets\Levels\CutScenes\Intro\ScrollingBackground.cs" />
+    <Compile Include="Assets\OutroManager.cs" />
     <Compile Include="Assets\PlayerSelectScript.cs" />
     <Compile Include="Assets\Portal.cs" />
     <Compile Include="Assets\scoreText.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scripts\PlatformInGame\Enemy\EnemyClass.cs" />
     <Compile Include="Assets\Scripts\PlatformInGame\Enemy\EnemyNisse.cs" />
     <Compile Include="Assets\Scripts\PlatformInGame\GameManagerPlatform.cs" />
+    <Compile Include="Assets\Scripts\PlatformInGame\HealthBar.cs" />
     <Compile Include="Assets\Scripts\PlatformInGame\ObjectStats.cs" />
     <Compile Include="Assets\Scripts\PlatformInGame\PlayerControllerPlatform.cs" />
     <Compile Include="Assets\Scripts\PlatformInGame\Projectiles\nisse_fireball.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Assets\WorldMapCursor.cs" />
     <None Include="Assets\Sprites\Platform\public-license.txt" />
     <None Include="Assets\Levels\CutScenes\Intro\OpeningCutScene.txt" />
+    <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Marcus/Documents/GitHub/Anders_och_Bengans_spel/Project8_v2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -339,6 +342,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{68984E88-90CD-2C0E-E344-C5EE6171575A}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
